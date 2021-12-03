@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>basic_linux</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1>Basic Linux Commands</h1><p><span> </span><a href='index.html'><span>Home</span></a></p><h6>For systadmin/advanced Linux: <a href="ex200.html">EX200</a></h6><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#-introduction-to-linux">👋 Introduction to Linux</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n97"><a class="md-toc-inner" href="#-understanding-your-environment">🤔 Understanding your Environment</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n207"><a class="md-toc-inner" href="#-help">❓ Help</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n234"><a class="md-toc-inner" href="#-navigation-and-exploring">🌐 Navigation and Exploring</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n308"><a class="md-toc-inner" href="#-manipulating-files-and-directories">📂 Manipulating Files and Directories</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n346"><a class="md-toc-inner" href="#-text-editors">📓 Text Editors</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n399"><a class="md-toc-inner" href="#-creating-users-and-groups">👪 Creating Users and Groups</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n526"><a class="md-toc-inner" href="#-locating-files-and-searching">🔍 Locating Files and Searching</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n561"><a class="md-toc-inner" href="#-processes">📄 Processes</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n608"><a class="md-toc-inner" href="#-permissions">⛔️ Permissions<span>		</span></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n721"><a class="md-toc-inner" href="#-networking">⚡️ Networking</a></span></p></div><h2 id='-introduction-to-linux'>👋<span> Introduction to Linux</span></h2><p>&nbsp;</p><p><span>Linus Torvalds wrote the first Linux kernel in 1991. Linux is an open source operating system made up mostly of the following layers:</span></p><ul><li><p><strong><span>Kernel</span></strong><span> - Core component of the Operating System. It provides and manages computer resources. Responsible for process, memory, and device management</span></p></li><li><p><strong><span>Desktop environment</span></strong><span> - GNOME, KDE&#39;s Plasma, MATE, and XFCE. Distributions (distros) like Debian, Fedora, etc. use different desktop environments</span></p></li><li><p><strong><span>Daemons</span></strong><span> - programs that run in the background of the operating system (like system processes in windows)</span></p></li><li><p><strong><span>User Applications</span></strong><span> - Applications user installs </span></p><p>&nbsp;</p></li></ul><figure><table><thead><tr><th><span>GUI</span></th><th><span>Filesystems</span></th><th><span>Shell</span></th><th><span>Libraries</span></th></tr></thead><tbody><tr><td><span>x11</span></td><td><span>ext3</span></td><td><span>bash</span></td><td><span>libc vs glibc</span></td></tr><tr><td><span>unity</span></td><td><span>ext4</span></td><td><span>zsh</span></td><td><span>uclibc vs musl_libc</span></td></tr><tr><td><span>gnome</span></td><td><span>xfs</span></td><td><span>tsh</span></td><td>&nbsp;</td></tr><tr><td><span>kde</span></td><td><span>jfs</span></td><td><span>csh</span></td><td>&nbsp;</td></tr><tr><td><span>lxde</span></td><td><span>reiserfs</span></td><td><span>sh</span></td><td>&nbsp;</td></tr><tr><td><span>xfce</span></td><td><span>btrfs</span></td><td><span>korn</span></td><td>&nbsp;</td></tr><tr><td><span>cinnamon</span></td><td><span>zfs</span></td><td><span>fish</span></td><td>&nbsp;</td></tr><tr><td><span>cli</span></td><td><span>hfs</span></td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p><u><span>Five Main Distributions</span></u></p><figure><table><thead><tr><th><span>Debian</span></th><th><span>Arch</span></th><th><span>Slackware</span></th><th><span>RedHat</span></th><th><span>Android</span></th></tr></thead><tbody><tr><td><span>Ubuntu</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>CentOS</span></td><td>&nbsp;</td></tr><tr><td><span>Kali</span></td><td>&nbsp;</td><td>&nbsp;</td><td><span>Fedora</span></td><td>&nbsp;</td></tr><tr><td><span>Mint</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td><span>Backtrack</span></td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></tbody></table></figure><p>&nbsp;</p><h2 id='-understanding-your-environment'>🤔<span> Understanding your Environment</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><p>&nbsp;</p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>uname -a</code></td><td><span>determine OS, Version, and Distribution</span></td></tr><tr><td><code>whoami</code></td><td><span>shows what user you are logged in as</span></td></tr><tr><td><code>id</code></td><td><span>shows detailed information about a user. Also shows group ids and groups you are in</span></td></tr><tr><td><code>echo $PATH</code></td><td><span>prints the environment path</span></td></tr><tr><td>&nbsp;</td><td><span>add directory/file to path : </span><code>export PATH=$PATH;&lt;directory/file to add&gt;</code></td></tr><tr><td><code>hostname</code></td><td><span>shows hostname of machine</span></td></tr><tr><td>&nbsp;</td><td><span>locations:   </span><code>/etc/hosts   /etc/hostname   /etc/sysconfig/network</code></td></tr><tr><td><code>date</code></td><td><span>shows current date. There are several options for displaying the date</span></td></tr><tr><td>&nbsp;</td><td><span>show MM/DD/YYYY H:M:S :  </span><code>date +%D\ %T</code></td></tr><tr><td><code>w</code></td><td><span>show who is logged in TTY, Login Time, Idle, and what they are doing</span></td></tr><tr><td><code>uptime</code></td><td><span>check system uptime</span></td></tr><tr><td><code>Absolute Path</code></td><td><span>when navigating to or viewing a file use full path starting with root (/)</span></td></tr><tr><td>&nbsp;</td><td><span>example:  </span><code>cat /home/user/Documents/files/file1.txt</code></td></tr><tr><td><code>Relative Path</code></td><td><span>as opposed to absolute, you would be in the directory of the file you wish to interact with</span></td></tr><tr><td>&nbsp;</td><td><span>example: </span><code>cd /home/user/Documents/files/</code><span>   </span><code>cat file1.txt</code></td></tr></tbody></table></figure><p>&nbsp;</p><p><u><span>Basic Permissions on a file/directory</span></u><span> </span></p><p><code>ls -latr file.txt</code></p><p><strong><span>-rw-r--r--    1   user    group    1389    Mon    Day    00:00    file.txt</span></strong></p><p>&nbsp;</p><figure><table><thead><tr><th><span>Input</span></th><th style='text-align:left;' ><span>Description</span></th></tr></thead><tbody><tr><td><span>-</span></td><td style='text-align:left;' ><span>file type :   </span><strong><span>-</span></strong><span> (file), </span><strong><span>d</span></strong><span> (directory), </span><strong><span>l</span></strong><span> (link), </span><strong><span>b</span></strong><span> (block device), </span><strong><span>s</span></strong><span> (socket)</span></td></tr><tr><td><span>rw-r--r--</span></td><td style='text-align:left;' ><span>permissions</span></td></tr><tr><td><span>1</span></td><td style='text-align:left;' ><span>number of links</span></td></tr><tr><td><span>user</span></td><td style='text-align:left;' ><span>user that owns the file</span></td></tr><tr><td><span>group</span></td><td style='text-align:left;' ><span>group that owns the file</span></td></tr><tr><td><span>size</span></td><td style='text-align:left;' ><span>size of the file in kilobytes (</span><code>ls -h</code><span>for human readable)</span></td></tr><tr><td><span>Mon/Day</span></td><td style='text-align:left;' ><span>month and day file/directory was created/modified</span></td></tr><tr><td><span>00:00</span></td><td style='text-align:left;' ><span>time the file was created/ last modified</span></td></tr><tr><td><span>file.txt</span></td><td style='text-align:left;' ><span>file name</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><u><span>Command Prompt</span></u></p><p><strong><span>student@workstation:~ $</span></strong></p><p>&nbsp;</p><figure><table><thead><tr><th><span>Input</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>student</span></td><td><span>current user</span></td></tr><tr><td><span>workstation</span></td><td><span>hostname</span></td></tr><tr><td><span>~</span></td><td><span>current directory  ~ is the current users home directory</span></td></tr><tr><td><span>$</span></td><td><span>regular user permissions ,  #  would be superuser(root) permissions</span></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-help'>❓<span> Help</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><p><span>Get help with most commands by typing </span><code>--help</code><span> after a command or use man pages </span><code>man &lt;command&gt;</code></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>man</code></td><td><span>manual pages (help) for most commands</span></td></tr><tr><td>&nbsp;</td><td><span>when inside man you can type / to search for a specific term hit enter and then type (n) to move to next found result</span></td></tr><tr><td><code>--help</code></td><td><span>run after a command for a brief help summary   </span><code>cat --help</code></td></tr><tr><td><code>whatis</code></td><td><span>show man pages and one-liner summary   </span><code>whatis &lt;command&gt;</code></td></tr><tr><td><code>apropos</code></td><td><span>search for a feature and get a list of tools for that feature  (man -k does the same thing)   </span><code>apropos &lt;command&gt;</code></td></tr><tr><td><code>info</code></td><td><span>provides information about a particular command   </span><code>info &lt;command&gt;</code></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-navigation-and-exploring'>🌐<span> Navigation and Exploring</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>pwd</code></td><td><span>Print working directory</span></td></tr><tr><td><code>ls</code></td><td><span>List files in a directory (lowercase L)</span></td></tr><tr><td>&nbsp;</td><td><code>l</code><span> - long listing</span></td></tr><tr><td>&nbsp;</td><td><code>a</code><span> - show hidden files</span></td></tr><tr><td>&nbsp;</td><td><code>t</code><span> - sort by modified time newest first</span></td></tr><tr><td>&nbsp;</td><td><code>r</code><span> - reverse order while sorting</span></td></tr><tr><td>&nbsp;</td><td><code>d</code><span> - show directory info</span></td></tr><tr><td>&nbsp;</td><td><code>h</code><span> - human readable size</span></td></tr><tr><td><code>file</code></td><td><span>determine a files type (jpg, bin, ASCII, tar, gzip)  </span><code>file &lt;file&gt;</code></td></tr><tr><td><code>cd</code></td><td><span>Change directory. </span><code>cd</code><span> by itself (no options) will always take you to the current users home directory</span></td></tr><tr><td>&nbsp;</td><td><code>cd ..</code><span>    takes you back (up) to the parent directory</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><u><span>View the contents of a file:</span></u></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>cat</code></td><td><span>View contents of a file</span></td></tr><tr><td><code>less</code></td><td><span>scroll forward and backward through a file</span></td></tr><tr><td><code>more</code></td><td><span>View contents of a file one page at a time</span></td></tr><tr><td><code>head</code></td><td><span>View the first 10 lines of a file (10 lines default)  </span><code>-n #</code><span> to specify number of lines to show</span></td></tr><tr><td><code>tail</code></td><td><span>View the last 10 lines of a file (10 lines default)   </span><code>-n #</code><span> to specify number of lines to show</span></td></tr><tr><td><code>grep</code></td><td><span>print lines matching a pattern</span></td></tr><tr><td>&nbsp;</td><td><code>grep root /etc/passwd</code><span> will show you only lines that include root in the /etc/passwd file</span></td></tr><tr><td>&nbsp;</td><td><span>you can use regular expression with </span><code>grep -e/E</code><span> using -e is the same as using the command </span><code>egrep</code><span>. also used to provide several search terms</span></td></tr><tr><td>&nbsp;</td><td><span>Regular Expression: </span><code>^root</code><span> begins with root , </span><code>root$</code><span> ends in root, </span><code>.</code><span> matches any single character, </span><code>[ec]</code><span> will match a group of characters. Much more covered </span><a href='https://linuxize.com/post/regular-expressions-in-grep/'><span>here</span></a></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-manipulating-files-and-directories'>📂<span> Manipulating Files and Directories</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>cp</code></td><td><span>copies a file/directory from one location to another  </span><code>cp &lt;filename&gt; &lt;destination&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>cp -r</code><span>    copy full directories</span></td></tr><tr><td><code>mv</code></td><td><span>moves or renames a file/directory </span><code>mv &lt;filename&gt; &lt;destination&gt;</code></td></tr><tr><td>&nbsp;</td><td><span>mv can also be used to rename a file </span><code>mv file1.txt file1_newname.txt</code></td></tr><tr><td><code>mkdir</code></td><td><span>create/make a new directory</span></td></tr><tr><td>&nbsp;</td><td><code>mkdir -p</code><span>  creates all directories including parent directories if they do not exist</span></td></tr><tr><td><code>rm</code></td><td><span>remove a file   </span><code>rm &lt;filename&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>rm -r &lt;directory&gt;</code><span>  remove a directory</span></td></tr><tr><td>&nbsp;</td><td><code>rm -rf &lt;filename&gt;/&lt;directory&gt;</code><span> force removal of file and/or directory</span></td></tr><tr><td>&nbsp;</td><td><span>You may use the * as a wildcard, meaning all or everything. </span><code>rm ~/Documents/files/*</code><span>  will delete every file in the directory</span></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-text-editors'>📓<span> Text Editors</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Text Editor</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>vim</code></td><td><span>comprehensive text editor with a big learning curve but worth it. </span><code>vim &lt;file&gt;</code><span>  </span><a href='https://vim.rtorr.com/'><span>Vim Cheatsheet</span></a></td></tr><tr><td>&nbsp;</td><td><code>esc</code><span>  command mode</span></td></tr><tr><td>&nbsp;</td><td><code>i</code><span>  enter insert mode</span></td></tr><tr><td>&nbsp;</td><td><code>:wq!</code><span>   save and quit</span></td></tr><tr><td>&nbsp;</td><td><code>:q!</code><span>  quit without saving</span></td></tr><tr><td>&nbsp;</td><td><code>dd</code><span> delete a single line</span></td></tr><tr><td>&nbsp;</td><td><code>:set nu</code><span>  add line numbers</span></td></tr><tr><td>&nbsp;</td><td><code>u</code><span>  undo/redo</span></td></tr><tr><td>&nbsp;</td><td><code>yy</code><span>  copy a line</span></td></tr><tr><td>&nbsp;</td><td><code>p</code><span>  paste a line</span></td></tr><tr><td>&nbsp;</td><td><code>v</code><span>  enter visual mode (easier to select and delete)</span></td></tr><tr><td><code>nano</code></td><td><span>easy text editor   </span><code>nano &lt;file&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>ctrl + o</code><span>   writes/saves file</span></td></tr><tr><td>&nbsp;</td><td><code>ctrl + x</code><span>   exit nano</span></td></tr><tr><td><code>gedit</code></td><td><span>will open a notepad/wordpad gui to edit/create files</span></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-creating-users-and-groups'>👪<span> Creating Users and Groups</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>useradd &lt;options&gt; &lt;username&gt;</code></td><td><span>create a new user</span></td></tr><tr><td>&nbsp;</td><td><code>-d</code><span> set home folder     default: </span><code>/home/&lt;username&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>-s</code><span> specify shell             </span><code>/bin/bash /bin/sh /bin/fish</code></td></tr><tr><td>&nbsp;</td><td><code>-c &quot;Comment&quot;</code><span> add a comment for new user</span></td></tr><tr><td>&nbsp;</td><td><code>-g &lt;group&gt;</code><span> specify primary group</span></td></tr><tr><td>&nbsp;</td><td><code>-G &lt;additional group&gt;</code><span> add supplementary/additional groups</span></td></tr><tr><td>&nbsp;</td><td><code>-u &lt;number&gt;</code><span> specify user ID</span></td></tr><tr><td><code>passwd &lt;username&gt;</code></td><td><span>set/change password for specific user</span></td></tr><tr><td><code>usermod &lt;username&gt;</code></td><td><span>modify a user account</span></td></tr><tr><td>&nbsp;</td><td><code>usermod -a -G &lt;supplementary group&gt; &lt;username&gt;</code><span> add an existing user to another group</span></td></tr><tr><td><code>groupadd  &lt;groupname&gt;</code></td><td><span>create a new group</span></td></tr><tr><td>&nbsp;</td><td><code>-g &lt;number&gt;</code><span> specify group id</span></td></tr><tr><td><code>chage &lt;username&gt;</code></td><td><span>show password policy for a user</span></td></tr><tr><td>&nbsp;</td><td><code>-d</code><span> set number of days since password was changed. set to 0 to have user change password on first log in</span></td></tr><tr><td>&nbsp;</td><td><code>-m</code><span> minimum days between password changes</span></td></tr><tr><td>&nbsp;</td><td><code>-M</code><span> maximum days password is valid</span></td></tr><tr><td>&nbsp;</td><td><code>-W</code><span> set number of days of warning before a password change is required</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><u><span>All users on the system have an entry in /etc/passwd:</span></u></p><p><strong><span>student:X:1000:1000:New Student User:/home/student:/bin/bash</span></strong></p><figure><table><thead><tr><th><span>Section</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>student</span></td><td><span>username</span></td></tr><tr><td><span>x</span></td><td><span>password is stored in </span><code>/etc/shadow</code></td></tr><tr><td><span>1000</span></td><td><span>user ID</span></td></tr><tr><td><span>1000</span></td><td><span>group ID</span></td></tr><tr><td><span>New Student User</span></td><td><span>user comment</span></td></tr><tr><td><span>/home/student</span></td><td><span>home directory</span></td></tr><tr><td><span>/bin/bash</span></td><td><span>users shell</span></td></tr></tbody></table></figure><p>&nbsp;</p><p><u><span>Passwords are stored (encrypted) in the </span><code>/etc/shadow</code><span> file:</span></u></p><p><strong><span>student</span></strong><span>:$6$LKj8SL2rdS$lkSl38Slnww08slsks3LS:17736:0:99999:7:::</span></p><figure><table><thead><tr><th><span>Section</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>student</span></td><td><span>username</span></td></tr><tr><td><span>$6$</span></td><td><span>encryption type</span></td></tr><tr><td><span>LKj8SL2rdS$</span></td><td><span>password salt</span></td></tr><tr><td><span>lkSl38Slnww08slsks3LS</span></td><td><span>encrypted Password</span></td></tr><tr><td><span>17736</span></td><td><span>the date when the password was last changed, number of days since January 1, 1970 (epoch date)</span></td></tr><tr><td><span>0</span></td><td><span>minimum password age</span></td></tr><tr><td><span>99999</span></td><td><span>maximum password age</span></td></tr><tr><td><span>7</span></td><td><span>warning period</span></td></tr><tr><td><span>last three</span></td><td><span>inactivity period, expiration date, Unused</span></td></tr></tbody></table></figure><p><u><span>Encryption Types:</span></u></p><p><span>$1$ – MD5</span></p><p><span>$2a$ – Blowfish</span></p><p><span>$2y$ – Eksblowfish</span></p><p><span>$5$ – SHA-256</span></p><p><span>$6$ – SHA-512</span></p><hr /><p>&nbsp;</p><h2 id='-locating-files-and-searching'>🔍<span> Locating Files and Searching</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>find</code></td><td><span>find a file or directory </span><code>find &lt;search location&gt; &lt;options&gt; &lt;search term&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>find /</code><span> searches in the root directory</span></td></tr><tr><td>&nbsp;</td><td><code>-type</code><span>  searches for a type : f file  d directory  b block device</span></td></tr><tr><td>&nbsp;</td><td><code>-iname</code><span> search case insensitive</span></td></tr><tr><td>&nbsp;</td><td><code>-user</code><span> search files owned by a specific user</span></td></tr><tr><td>&nbsp;</td><td><code>-group</code><span> search files owned by a specific group</span></td></tr><tr><td>&nbsp;</td><td><code>-perm</code><span> search for files with specific permission set (octal format, see permissions section)</span></td></tr><tr><td>&nbsp;</td><td><code>-size #c</code><span> search for files with a specific size (c for bytes, M for megabytes, G for Gigabytes)</span></td></tr><tr><td><code>locate &lt;filename&gt;</code></td><td><span>locates a file or directory. You may need to </span><code>updatedb</code></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-processes'>📄<span> Processes</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>ps</code></td><td><span>show running processes </span><code>ps -elf |grep &lt;username or program&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>ps -elf</code><span>             </span><code>e</code><span>  all processes, </span><code>l</code><span>  long format , </span><code>f</code><span>  full-format</span></td></tr><tr><td><code>top</code></td><td><span>live view of running processes</span></td></tr><tr><td>&nbsp;</td><td><code>c</code><span> sort by CPU usage</span></td></tr><tr><td>&nbsp;</td><td><span>m sort by memory usage</span></td></tr><tr><td>&nbsp;</td><td><code>k</code><span> to kill a process followed by process id (PID) then </span><code>&lt;enter&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>r</code><span> to renice using PID</span></td></tr><tr><td><code>renice</code></td><td><span>control/set the priority of a process  </span><code>renice -n &lt;value&gt; &lt;PID&gt;</code></td></tr><tr><td>&nbsp;</td><td><span>values range from -20 to +19 priority (-20 highest, +19 lowest, 0 default)</span></td></tr><tr><td><code>pidof</code></td><td><span>get PID of a program   </span><code>pidof &lt;process name&gt;</code></td></tr><tr><td><code>kill</code></td><td><span>kills a process using signals. Get a list of signals and their corresponding values </span><code>man 7 signal</code></td></tr><tr><td>&nbsp;</td><td><code>kill &lt;signal/number&gt; &lt;PID&gt;</code></td></tr><tr><td>&nbsp;</td><td><span>Kill Signal - </span><code>kill -9 &lt;PID&gt;</code><span>  same as </span><code>kill SIGKILL &lt;PID&gt;</code></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-permissions'>⛔️<span> Permissions</span><span>		</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><p><span>Each file/directory can have </span><u><span>r(read)</span></u><span>, w(write), and </span><u><span>x(execute)</span></u><span> permissions</span></p><p><span>When doing a long listing </span><code>ls -l</code><span> on a file you can see what permissions are on that file. Use </span><code>ls -ld</code><span> to see permissions on directories</span></p><p>&nbsp;</p><p><strong><span>-rwxrw-r--   1    student    class1     1389     Mon    Day      00:00      file.sh</span></strong></p><p>&nbsp;</p><figure><table><thead><tr><th><span>Permission</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>rwx</span></td><td><span>the first permissions would be for </span><u><span>owner</span></u><span> permissions (student)</span></td></tr><tr><td><span>rw</span></td><td><span>the second permissions would be for </span><u><span>group</span></u><span> permissions (class1)</span></td></tr><tr><td><span>r</span></td><td><span>the third permissions would be for </span><u><span>all others</span></u><span> (not the owner or part of the group)</span></td></tr></tbody></table></figure><p><span>In the example file (file.sh) above the following permission would apply</span></p><figure><table><thead><tr><th><span>User/Group/Others</span></th><th><span>Permissions</span></th></tr></thead><tbody><tr><td><span>The user student</span></td><td><span>Read, Write/Edit, and Execute the file.sh script</span></td></tr><tr><td><span>The group class1</span></td><td><span>Read, Write/Edit the file.sh script but would not be able to execute/run the file.sh script</span></td></tr><tr><td><span>All Others (not the user student or in the group class1)</span></td><td><span>Would only be allowed to read the contents of the file.sh script</span></td></tr></tbody></table></figure><p><span>	</span></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>chmod</code></td><td><span>change permissions of a file.  </span><code>chmod &lt;octal or letters&gt; &lt;file&gt;</code></td></tr><tr><td>&nbsp;</td><td><span>When changing permission on a file you can use </span><strong><span>letters (rwx)</span></strong><span> or </span><strong><span>octal (755)</span></strong><span> to represent what permissions you want on a file</span></td></tr></tbody></table></figure><p><u><span>Octal Numbers</span></u><span> </span></p><p><span> R W X are represented as 4 2 1 respectively </span></p><figure><table><thead><tr><th><span>Octal</span></th><th><span>Permission</span></th></tr></thead><tbody><tr><td><span>7</span></td><td><span>RWX</span></td></tr><tr><td><span>6</span></td><td><span>RW</span></td></tr><tr><td><span>5</span></td><td><span>RX</span></td></tr><tr><td><span>4</span></td><td><span>R</span></td></tr><tr><td><span>3</span></td><td><span>WX</span></td></tr><tr><td><span>2</span></td><td><span>W</span></td></tr><tr><td><span>1</span></td><td><span>X</span></td></tr></tbody></table></figure><p><span> </span><code>chmod 764 file.sh</code><span> </span></p><ul><li><p><span>7 would be for the user permissions</span></p></li><li><p><span>6 for group permissions </span></p></li><li><p><span>4 for all other permissions.</span></p><p>&nbsp;</p></li></ul><p><u><span>Letter Representation</span></u></p><ul><li><code>u</code><span> for user</span></li><li><code>g</code><span> for group</span></li><li><code>o</code><span> for others</span></li></ul><p><span>use r w x  to specify  permissions. use </span><code>+</code><span> to add, </span><code>-</code><span> to remove permissions</span></p><p><span>	</span><span> </span><code>chmod u+rwx file.sh</code><span>                        this will apply r w x permissions for the user.</span></p><p><span>	</span><span> </span><code>chmod g-x file.sh</code><span>  </span><span>			</span><span>              this will remove x permissions for the group.</span></p><p><span>	</span><span> </span><code>chmod u+rwx,g+rw,o+r file.sh</code><span>     this will apply r w x for the user, r w for the  group, and r for others.</span></p><p><span>Additional permissions </span><a href='rh124.html'><span>here</span></a></p><p>&nbsp;</p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>chown</code></td><td><span>change ownership of a file  </span><code>chown &lt;user&gt;:&lt;group&gt; &lt;filename/directory&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>chown root:wheel file.sh</code><span> changes the owner of the file.sh to root and the group owner to wheel</span></td></tr><tr><td>&nbsp;</td><td><code>chown :wheel file.sh</code><span>    would only change group ownership</span></td></tr><tr><td>&nbsp;</td><td><code>chown root: file.sh</code><span>      would only change user ownership</span></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h2 id='-networking'>⚡️<span> Networking</span></h2><p><a href="basic_linux.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>ifconfig</code></td><td><span>show network configurations such as interfaces, ipv4/ipv6 address, netmask, broadcast</span></td></tr><tr><td>&nbsp;</td><td><span>most distributions are moving to </span><code>ip addr</code><span> instead of </span><code>ifconfig</code></td></tr><tr><td><code>ip neigh</code></td><td><span>show links connected to host (similar to arp -a)</span></td></tr><tr><td><code>ip route</code></td><td><span>show routing table (how your network is routed)</span></td></tr><tr><td>&nbsp;</td><td><span>can also use </span><code>route</code><span> for a cleaner output</span></td></tr><tr><td><code>traceroute</code></td><td><span>show the route a packet takes to a specific host </span><code>traceroute &lt;URL/IP&gt;</code></td></tr><tr><td><code>netstat</code></td><td><span>show network socket information  </span><code>netstat -auntp</code></td></tr><tr><td>&nbsp;</td><td><code>a</code><span> show all</span></td></tr><tr><td>&nbsp;</td><td><code>u</code><span> show udp connections</span></td></tr><tr><td>&nbsp;</td><td><code>t</code><span> show tcp connections</span></td></tr><tr><td>&nbsp;</td><td><code>n</code><span> show numeric only, no host name resolution</span></td></tr><tr><td>&nbsp;</td><td><code>p</code><span> show PID and program</span></td></tr><tr><td><code>ss</code></td><td><span>similar to netstat, more functionality</span></td></tr><tr><td>&nbsp;</td><td><code>ss -auntp</code><span>  this would give a similar output as netstat -auntp</span></td></tr><tr><td>&nbsp;</td><td><code>ss -o state established &#39;( dport = :ssh or sport = :ssh )&#39;</code><span> specify state and destination/source ports</span></td></tr><tr><td>&nbsp;</td><td><code>-o</code><span> show timer information (state=all,established,listening,time-wait,closed )</span></td></tr><tr><td>&nbsp;</td><td><code>&#39;(&lt;parameters go here such as dport = :ssh)&#39;</code></td></tr><tr><td>&nbsp;</td><td><code>&#39;(src 192.168.1.24 or dst 192.168.1.24)&#39;</code><span> specify source and destination IPs</span></td></tr></tbody></table></figure><hr /><p>&nbsp;</p></div></div>
+</body>
+</html>

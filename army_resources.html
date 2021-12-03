@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>army_resources</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1> Army Resources </h1><p><a href='index.html'><span>Home</span></a></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#common-sites">Common Sites</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n67"><a class="md-toc-inner" href="#army-websites">Army Websites</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n164"><a class="md-toc-inner" href="#human--resources">Human  Resources</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n213"><a class="md-toc-inner" href="#health">Health</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n265"><a class="md-toc-inner" href="#information-technology">Information Technology</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n281"><a class="md-toc-inner" href="#dod">DoD</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n322"><a class="md-toc-inner" href="#training">Training</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n380"><a class="md-toc-inner" href="#family">Family<span>	</span></a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n408"><a class="md-toc-inner" href="#finance">Finance</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n427"><a class="md-toc-inner" href="#legal">Legal</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n449"><a class="md-toc-inner" href="#combat-readiness">Combat Readiness</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n480"><a class="md-toc-inner" href="#professional-development">Professional Development</a></span></p></div><h2 id='common-sites'><span>Common Sites</span></h2><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>C Co 781st Sharepoint</span></td><td><a href='https://armyeitaas.sharepoint-mil.us/teams/Conquerors' target='_blank' class='url'>https://armyeitaas.sharepoint-mil.us/teams/Conquerors</a></td></tr><tr><td><span>AKO Links</span></td><td><a href='https://armyknowledgeoffline.com/' target='_blank' class='url'>https://armyknowledgeoffline.com/</a></td></tr><tr><td><span>Teams</span></td><td><a href='https://dod.teams.microsoft.us/' target='_blank' class='url'>https://dod.teams.microsoft.us/</a></td></tr><tr><td><span>MedPros</span></td><td><a href='https://medpros.mods.army.mil/portal/' target='_blank' class='url'>https://medpros.mods.army.mil/portal/</a></td></tr><tr><td><span>INSCOM VPN</span></td><td><a href='https://ra-belv.army.mil' target='_blank' class='url'>https://ra-belv.army.mil</a></td></tr><tr><td><span>Military CAC</span></td><td><a href='https://militarycac.com/' target='_blank' class='url'>https://militarycac.com/</a></td></tr><tr><td><span>Army Reenlistment</span></td><td><a href='https://armyreenlistment.com/site/' target='_blank' class='url'>https://armyreenlistment.com/site/</a></td></tr><tr><td><span>Army webmail</span></td><td><a href='https://web-mech02.mail.mil/my.policy' target='_blank' class='url'>https://web-mech02.mail.mil/my.policy</a><span>)</span></td></tr><tr><td><span>DA pubs and forms</span></td><td><a href='https://armypubs.army.mil/ProductMaps/PubForm/DAForm.aspx' target='_blank' class='url'>https://armypubs.army.mil/ProductMaps/PubForm/DAForm.aspx</a></td></tr><tr><td><span>ALMS</span></td><td><a href='https://federation.eams.army.mil/sso/authenticate/?u=https%3a%2f%2fwww.lms.army.mil%2f&amp;m=GET&amp;r=f&amp;p=781&amp;x=true' target='_blank' class='url'>https://federation.eams.army.mil/sso/authenticate/?u=https%3a%2f%2fwww.lms.army.mil%2f&m=GET&r=f&p=781&x=true</a></td></tr><tr><td><span>JKO</span></td><td><a href='https://jkodirect.jten.mil/' target='_blank' class='url'>https://jkodirect.jten.mil/</a></td></tr><tr><td><span>IKN</span></td><td><a href='https://www.ikn.army.mil/' target='_blank' class='url'>https://www.ikn.army.mil/</a></td></tr><tr><td><span>Joint Pubs</span></td><td><a href='https://www.jcs.mil/Doctrine/Joint-Doctine-Pubs/' target='_blank' class='url'>https://www.jcs.mil/Doctrine/Joint-Doctine-Pubs/</a></td></tr><tr><td><span>S1 Net</span></td><td><a href='https://login.milsuite.mil/?goto=https%3A%2F%2Fwww.milsuite.mil%3A443%2Fs1net' target='_blank' class='url'>https://login.milsuite.mil/?goto=https%3A%2F%2Fwww.milsuite.mil%3A443%2Fs1net</a></td></tr><tr><td><span>AIM. My RFO: Request for orders</span></td><td><a href='https://aim.hrc.army.mil/' target='_blank' class='url'>https://aim.hrc.army.mil/</a></td></tr><tr><td><span>HRC</span></td><td><a href='https://www.hrc.army.mil/' target='_blank' class='url'>https://www.hrc.army.mil/</a></td></tr><tr><td><span>EES: Evaluation Entry System</span></td><td><a href='https://evaluations.hrc.army.mil/' target='_blank' class='url'>https://evaluations.hrc.army.mil/</a></td></tr><tr><td><span>SRB : Enlisted Record Brief</span></td><td><a href='https://myerb.ahrs.army.mil/soldierLogin.do' target='_blank' class='url'>https://myerb.ahrs.army.mil/soldierLogin.do</a></td></tr><tr><td><span>IPerms</span></td><td><a href='https://www.hrc.army.mil/content/iPERMS%20Access' target='_blank' class='url'>https://www.hrc.army.mil/content/iPERMS%20Access</a></td></tr></tbody></table></figure><hr /><h2 id='army-websites'><span>Army Websites</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>Army 365                              email - first.mi.last.mil/civ/ctr@army.mil</span></td><td><a href='https://dod.teams.microsoft.us/'><span>dod.teams.microsoft.us/</span></a></td></tr><tr><td><span>Army Senior Leadership</span></td><td><a href='https://www.army.mil/leaders/sa/' target='_blank' class='url'>https://www.army.mil/leaders/sa/</a></td></tr><tr><td><span>Army Publications</span></td><td><a href='https://armypubs.army.mil/' target='_blank' class='url'>https://armypubs.army.mil/</a></td></tr><tr><td><span>IPPS-A Training</span></td><td><a href='https://ipps-a.army.mil/training/' target='_blank' class='url'>https://ipps-a.army.mil/training/</a></td></tr><tr><td><span>My ERB: Enlisted Record Brief</span></td><td><a href='https://myerb.ahrs.army.mil/soldierLogin.do' target='_blank' class='url'>https://myerb.ahrs.army.mil/soldierLogin.do</a></td></tr><tr><td><span>My ORB: Officer Record Brief</span></td><td><a href='https://myorb.hrc.army.mil/' target='_blank' class='url'>https://myorb.hrc.army.mil/</a></td></tr><tr><td><span>My RFO: Request For Orders</span></td><td><a href='https://aim.hrc.army.mil/' target='_blank' class='url'>https://aim.hrc.army.mil/</a></td></tr><tr><td><span>DAPMIS: Department of the Army Photo Management Information System</span></td><td><a href='https://dapmis.hrc.army.mil/ImageAcceptProlog.action' target='_blank' class='url'>https://dapmis.hrc.army.mil/ImageAcceptProlog.action</a></td></tr><tr><td><span>AI2: Army Ideas for Innovation</span></td><td><a href='https://www.milsuite.mil/book/community/spaces/ai2' target='_blank' class='url'>https://www.milsuite.mil/book/community/spaces/ai2</a></td></tr><tr><td><span>Soldier Enhancement Program</span></td><td><a href='https://www.peosoldier.army.mil/SEP/' target='_blank' class='url'>https://www.peosoldier.army.mil/SEP/</a></td></tr><tr><td><span>ATEP: Antiterrorism Enterprise Portal</span></td><td><a href='https://army.deps.mil/army/sites/PMG/prog/ATEP/default.aspx' target='_blank' class='url'>https://army.deps.mil/army/sites/PMG/prog/ATEP/default.aspx</a></td></tr><tr><td><span>DHAP: Deployment Health Assessment Program</span></td><td><a href='https://www.usar.army.mil/DHAP/' target='_blank' class='url'>https://www.usar.army.mil/DHAP/</a></td></tr><tr><td><span>SMART: Supply and Maintenance Assessment and Review Team</span></td><td><a href='https://www.milsuite.mil/book/docs/DOC-101393' target='_blank' class='url'>https://www.milsuite.mil/book/docs/DOC-101393</a></td></tr><tr><td><span>CHESS: Computer Hardware Enterprise Software and Solutions</span></td><td><a href='https://chess.army.mil/' target='_blank' class='url'>https://chess.army.mil/</a></td></tr><tr><td><span>My Clothing Record</span></td><td><a href='https://ism.army.mil/ism/SelfServiceServlet?nav.nav_id=ssMyClothing' target='_blank' class='url'>https://ism.army.mil/ism/SelfServiceServlet?nav.nav_id=ssMyClothing</a></td></tr><tr><td><span>Army E-Learning</span></td><td><a href='https://www.pdmatis.army.mil/Army_e-Learning.html' target='_blank' class='url'>https://www.pdmatis.army.mil/Army_e-Learning.html</a></td></tr><tr><td><span>Eaglecash</span></td><td><a href='https://www.fiscal.treasury.gov/eaglecash/' target='_blank' class='url'>https://www.fiscal.treasury.gov/eaglecash/</a></td></tr><tr><td><span>MedlinePlus</span></td><td><a href='https://medlineplus.gov/' target='_blank' class='url'>https://medlineplus.gov/</a></td></tr><tr><td><span>FDM: Financial Disclosure Management</span></td><td><a href='https://www.fdm.army.mil/' target='_blank' class='url'>https://www.fdm.army.mil/</a></td></tr><tr><td><span>Trial Defense Service</span></td><td><a href='https://www.mdwhome.mdw.army.mil/sja/trial-defense' target='_blank' class='url'>https://www.mdwhome.mdw.army.mil/sja/trial-defense</a></td></tr><tr><td><span>JAG University</span></td><td><a href='https://jagu.army.mil/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_22_1' target='_blank' class='url'>https://jagu.army.mil/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_22_1</a></td></tr><tr><td><span>JAG Corps: Judge Advocate General Corps</span></td><td><a href='https://www.goarmy.com/jag.html' target='_blank' class='url'>https://www.goarmy.com/jag.html</a></td></tr><tr><td><span>SHARP: Sexual Harassment/Assault Response &amp; Prevention</span></td><td><a href='https://www.armyresilience.army.mil/sharp/index.html' target='_blank' class='url'>https://www.armyresilience.army.mil/sharp/index.html</a></td></tr><tr><td><span>Assignment Satisfaction Key</span></td><td><a href='https://www.ask.army.mil/ask' target='_blank' class='url'>https://www.ask.army.mil/ask</a></td></tr><tr><td><span>Army Benefits Center</span></td><td><a href='https://wr.acpol.army.mil/abc/' target='_blank' class='url'>https://wr.acpol.army.mil/abc/</a></td></tr><tr><td><span>Evaluation Entry System</span></td><td><a href='https://evaluations.hrc.army.mil/' target='_blank' class='url'>https://evaluations.hrc.army.mil/</a></td></tr><tr><td><span>Weapons Qualification</span></td><td><a href='https://dtms.army.mil/' target='_blank' class='url'>https://dtms.army.mil/</a></td></tr><tr><td><span>MILCONNECT</span></td><td><a href='https://milconnect.dmdc.osd.mil/milconnect/' target='_blank' class='url'>https://milconnect.dmdc.osd.mil/milconnect/</a></td></tr><tr><td><span>MWR: Army Family and Morale, Welfare and Recreation</span></td><td><a href='https://www.armymwr.com/' target='_blank' class='url'>https://www.armymwr.com/</a></td></tr><tr><td><span>Senior Army Leaders Page</span></td><td><a href='https://www.hqda.army.mil/hqda/main/home.asp' target='_blank' class='url'>https://www.hqda.army.mil/hqda/main/home.asp</a></td></tr></tbody></table></figure><hr /><h2 id='human--resources'><span>Human  Resources</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>IPPS-A Training</span></td><td><a href='https://ipps-a.army.mil/training/' target='_blank' class='url'>https://ipps-a.army.mil/training/</a></td></tr><tr><td><span>My ERB: Enlisted Record Brief</span></td><td><a href='https://myerb.ahrs.army.mil/soldierLogin.do' target='_blank' class='url'>https://myerb.ahrs.army.mil/soldierLogin.do</a></td></tr><tr><td><span>My ORB: Officer Record Brief</span></td><td><a href='https://myorb.hrc.army.mil/' target='_blank' class='url'>https://myorb.hrc.army.mil/</a></td></tr><tr><td><span>My RFO: Request For Orders</span></td><td><a href='https://aim.hrc.army.mil/' target='_blank' class='url'>https://aim.hrc.army.mil/</a></td></tr><tr><td><span>DAPMIS: Department of the Army Photo Management Information System</span></td><td><a href='https://dapmis.hrc.army.mil/ImageAcceptProlog.action' target='_blank' class='url'>https://dapmis.hrc.army.mil/ImageAcceptProlog.action</a></td></tr><tr><td><span>IPPS-A Public Website</span></td><td><a href='https://ipps-a.army.mil/' target='_blank' class='url'>https://ipps-a.army.mil/</a></td></tr><tr><td><span>Army Human Resources Command</span></td><td><a href='https://www.hrc.army.mil/' target='_blank' class='url'>https://www.hrc.army.mil/</a></td></tr><tr><td><span>E-Benefits</span></td><td><a href='https://www.ebenefits.va.gov/ebenefits' target='_blank' class='url'>https://www.ebenefits.va.gov/ebenefits</a></td></tr><tr><td><span>iPERMS</span></td><td><a href='https://iperms.hrc.army.mil/#/soldierRecord/' target='_blank' class='url'>https://iperms.hrc.army.mil/#/soldierRecord/</a></td></tr><tr><td><span>Assignment Satisfaction Key</span></td><td><a href='https://www.ask.army.mil/ask' target='_blank' class='url'>https://www.ask.army.mil/ask</a></td></tr><tr><td><span>Army Benefits Center</span></td><td><a href='https://wr.acpol.army.mil/abc/' target='_blank' class='url'>https://wr.acpol.army.mil/abc/</a></td></tr><tr><td><span>Evaluation Entry System</span></td><td><a href='https://evaluations.hrc.army.mil/' target='_blank' class='url'>https://evaluations.hrc.army.mil/</a></td></tr><tr><td><span>Army National Guard G1 Personnel Gateway</span></td><td><a href='https://arngg1.ngb.army.mil/SelfService/CareerCenter/Home.aspx' target='_blank' class='url'>https://arngg1.ngb.army.mil/SelfService/CareerCenter/Home.aspx</a></td></tr><tr><td><span>AESD: Army Enterprise Service Desk</span></td><td><a href='https://amid.us.army.mil/' target='_blank' class='url'>https://amid.us.army.mil/</a></td></tr></tbody></table></figure><hr /><h2 id='health'><span>Health</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>E-Benefits</span></td><td><a href='https://www.ebenefits.va.gov/ebenefits' target='_blank' class='url'>https://www.ebenefits.va.gov/ebenefits</a></td></tr><tr><td><span>Army Suicide Prevention Program</span></td><td><a href='https://www.armyg1.army.mil/hr/suicide/default.asp' target='_blank' class='url'>https://www.armyg1.army.mil/hr/suicide/default.asp</a></td></tr><tr><td><span>SOS: Survivor Outreach Services</span></td><td><a href='https://www.armymwr.com/programs-and-services/personal-assistance/survivor-outreach' target='_blank' class='url'>https://www.armymwr.com/programs-and-services/personal-assistance/survivor-outreach</a></td></tr><tr><td><span>Comprehensive Soldier Fitness</span></td><td><a href='https://www.usar.army.mil/CSF/' target='_blank' class='url'>https://www.usar.army.mil/CSF/</a></td></tr><tr><td><span>PHCOE: Psychological Health Center of Excellence</span></td><td><a href='https://www.pdhealth.mil/' target='_blank' class='url'>https://www.pdhealth.mil/</a></td></tr><tr><td><span>TRICARE Dental Readiness</span></td><td><a href='https://tricare.mil/CoveredServices/Dental/NGRDental/DentalReadiness' target='_blank' class='url'>https://tricare.mil/CoveredServices/Dental/NGRDental/DentalReadiness</a></td></tr><tr><td><span>Health.mil</span></td><td><a href='https://health.mil/About-MHS/OASDHA/Defense-Health-Agency/Education-and-Training/LEADS' target='_blank' class='url'>https://health.mil/About-MHS/OASDHA/Defense-Health-Agency/Education-and-Training/LEADS</a></td></tr><tr><td><span>MEDPROS</span></td><td><a href='https://medpros.mods.army.mil/portal/' target='_blank' class='url'>https://medpros.mods.army.mil/portal/</a></td></tr><tr><td><span>Military Onesource</span></td><td><a href='https://www.militaryonesource.mil/' target='_blank' class='url'>https://www.militaryonesource.mil/</a></td></tr><tr><td><span>SHARP: Sexual Harassment/Assault Response &amp; Prevention</span></td><td><a href='https://www.armyresilience.army.mil/sharp/index.html' target='_blank' class='url'>https://www.armyresilience.army.mil/sharp/index.html</a></td></tr><tr><td><span>ASAP: Army Substance Abuse Program</span></td><td><a href='https://sr2.army.mil/PROD_PUBLIC/index.jsp' target='_blank' class='url'>https://sr2.army.mil/PROD_PUBLIC/index.jsp</a></td></tr><tr><td><span>AMEDD CMS: Command Management System</span></td><td><a href='https://cms.mods.army.mil/cms/' target='_blank' class='url'>https://cms.mods.army.mil/cms/</a></td></tr><tr><td><span>APHC: Army Public Health Center</span></td><td><a href='https://phc.amedd.army.mil/Pages/default.aspx/' target='_blank' class='url'>https://phc.amedd.army.mil/Pages/default.aspx/</a></td></tr><tr><td><span>U.S. Army Veterinary Corps</span></td><td><a href='https://veterinarycorps.amedd.army.mil/' target='_blank' class='url'>https://veterinarycorps.amedd.army.mil/</a></td></tr><tr><td><span>LHI Appointment Scheduling</span></td><td><a href='https://lhi.care/start' target='_blank' class='url'>https://lhi.care/start</a></td></tr></tbody></table></figure><hr /><h2 id='information-technology'><span>Information Technology</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>DOD CAC: Common Access Card Reference Center</span></td><td><a href='https://www.cac.mil/' target='_blank' class='url'>https://www.cac.mil/</a></td></tr><tr><td><span>DISA: Defense Information System Agency Anti-Virus</span></td><td><a href='https://disa.deps.mil/ext/cop/mae/SitePages/Programs.aspx' target='_blank' class='url'>https://disa.deps.mil/ext/cop/mae/SitePages/Programs.aspx</a></td></tr><tr><td><span>DISA: Defense Information System Agency AV/AS Home Use</span></td><td><a href='https://storefront.disa.mil/kinetic/disa/service-catalog#/forms/antivirus-home-use' target='_blank' class='url'>https://storefront.disa.mil/kinetic/disa/service-catalog#/forms/antivirus-home-use</a></td></tr></tbody></table></figure><hr /><h2 id='dod'><span>DoD</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>milSuite</span></td><td><a href='https://www.milsuite.mil/' target='_blank' class='url'>https://www.milsuite.mil/</a></td></tr><tr><td><span>Air Forces Weather Agency</span></td><td><a href='https://weather.af.mil/' target='_blank' class='url'>https://weather.af.mil/</a></td></tr><tr><td><span>DS Login Registration</span></td><td><a href='https://myaccess.dmdc.osd.mil/identitymanagement/registration.do?execution=e1s1' target='_blank' class='url'>https://myaccess.dmdc.osd.mil/identitymanagement/registration.do?execution=e1s1</a></td></tr><tr><td><span>MyPay</span></td><td><a href='https://mypay.dfas.mil/#/' target='_blank' class='url'>https://mypay.dfas.mil/#/</a></td></tr><tr><td><span>Joint Improvised – Threat Defeat Organization</span></td><td><a href='https://www.dtra.mil/Mission/JIDO/' target='_blank' class='url'>https://www.dtra.mil/Mission/JIDO/</a></td></tr><tr><td><span>DFAS: Defense Finance and Accounting Service</span></td><td><a href='https://www.dfas.mil/' target='_blank' class='url'>https://www.dfas.mil/</a></td></tr><tr><td><span>U.S. Armed Forces Legal Assistance</span></td><td><a href='https://legalassistance.law.af.mil/' target='_blank' class='url'>https://legalassistance.law.af.mil/</a></td></tr><tr><td><span>Military Onesource</span></td><td><a href='https://www.militaryonesource.mil/' target='_blank' class='url'>https://www.militaryonesource.mil/</a></td></tr><tr><td><span>DTS: Defense Travel System</span></td><td><a href='https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view/' target='_blank' class='url'>https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view/</a></td></tr><tr><td><span>Defense Travel Management System</span></td><td><a href='https://www.defensetravel.dod.mil/' target='_blank' class='url'>https://www.defensetravel.dod.mil/</a></td></tr><tr><td><span>JKO: Joint Knowledge Online</span></td><td><a href='https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf' target='_blank' class='url'>https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf</a></td></tr></tbody></table></figure><p>&nbsp;</p><hr /><h2 id='training'><span>Training</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>IPPS-A Training</span></td><td><a href='https://ipps-a.army.mil/training/' target='_blank' class='url'>https://ipps-a.army.mil/training/</a></td></tr><tr><td><span>Army E-Learning</span></td><td><a href='https://www.pdmatis.army.mil/Army_e-Learning.html' target='_blank' class='url'>https://www.pdmatis.army.mil/Army_e-Learning.html</a></td></tr><tr><td><span>Military Onesource</span></td><td><a href='https://www.militaryonesource.mil/' target='_blank' class='url'>https://www.militaryonesource.mil/</a></td></tr><tr><td><span>SHARP: Sexual Harassment/Assault Response &amp; Prevention</span></td><td><a href='https://www.armyresilience.army.mil/sharp/index.html' target='_blank' class='url'>https://www.armyresilience.army.mil/sharp/index.html</a></td></tr><tr><td><span>MILGAMING</span></td><td><a href='https://milgaming.army.mil/Entrance/signup.aspx' target='_blank' class='url'>https://milgaming.army.mil/Entrance/signup.aspx</a></td></tr><tr><td><span>ATCT: Army Training and Certification Training</span></td><td><a href='https://atc.us.army.mil/iastar/' target='_blank' class='url'>https://atc.us.army.mil/iastar/</a></td></tr><tr><td><span>ATN: Army Training Network</span></td><td><a href='https://atn.army.mil/' target='_blank' class='url'>https://atn.army.mil/</a></td></tr><tr><td><span>ALMS: Army Learning Management System</span></td><td><a href='https://www.lms.army.mil/learnerview/' target='_blank' class='url'>https://www.lms.army.mil/learnerview/</a></td></tr><tr><td><span>MT2: My Training TAB</span></td><td><a href='https://atiam.train.army.mil/mthp/' target='_blank' class='url'>https://atiam.train.army.mil/mthp/</a></td></tr><tr><td><span>ATRRS: Army Training Requirements and Resources System</span></td><td><a href='https://www.atrrs.army.mil/Default.aspx' target='_blank' class='url'>https://www.atrrs.army.mil/Default.aspx</a></td></tr><tr><td><span>Army Skillport</span></td><td><a href='https://usarmy.skillport.com/skillportfe/custom/login/usarmy/login.action' target='_blank' class='url'>https://usarmy.skillport.com/skillportfe/custom/login/usarmy/login.action</a></td></tr><tr><td><span>TAG: TRADOC Application Gateway</span></td><td><a href='https://public.tag.army.mil/catalog/tag/home' target='_blank' class='url'>https://public.tag.army.mil/catalog/tag/home</a></td></tr><tr><td><span>JKO: Joint Knowledge Online</span></td><td><a href='https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf' target='_blank' class='url'>https://jkodirect.jten.mil/Atlas2/page/login/Login.jsf</a></td></tr><tr><td><span>ATIS: Army Training Information System</span></td><td><a href='https://www.pdmatis.army.mil/Index.html' target='_blank' class='url'>https://www.pdmatis.army.mil/Index.html</a></td></tr><tr><td><span>DTF: Digital Training Facility</span></td><td><a href='https://www.pdmatis.army.mil/DTF.html' target='_blank' class='url'>https://www.pdmatis.army.mil/DTF.html</a></td></tr><tr><td><span>MDTF: Mobile Digital Training Facility</span></td><td><a href='https://www.pdmatis.army.mil/MDTF.html' target='_blank' class='url'>https://www.pdmatis.army.mil/MDTF.html</a></td></tr><tr><td><span>DDTC: Deployed Digital Training Campus</span></td><td><a href='https://www.pdmatis.army.mil/DDTC.html' target='_blank' class='url'>https://www.pdmatis.army.mil/DDTC.html</a></td></tr></tbody></table></figure><hr /><h2 id='family'><span>Family</span><span>	</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>SOS: Survivor Outreach Services</span></td><td><a href='https://www.armymwr.com/programs-and-services/personal-assistance/survivor-outreach' target='_blank' class='url'>https://www.armymwr.com/programs-and-services/personal-assistance/survivor-outreach</a></td></tr><tr><td><span>Comprehensive Soldier Fitness</span></td><td><a href='https://www.usar.army.mil/CSF/' target='_blank' class='url'>https://www.usar.army.mil/CSF/</a></td></tr><tr><td><span>Military Onesource</span></td><td><a href='https://www.militaryonesource.mil/' target='_blank' class='url'>https://www.militaryonesource.mil/</a></td></tr><tr><td><span>DEERS: Defense Enrollment Eligibility Reporting System</span></td><td><a href='https://www.tricare.mil/DEERS/' target='_blank' class='url'>https://www.tricare.mil/DEERS/</a></td></tr><tr><td><span>AHOUS: Army Housing Online User Services</span></td><td><a href='https://www.housing.army.mil/' target='_blank' class='url'>https://www.housing.army.mil/</a></td></tr><tr><td><span>ACS: Army Community Services Staff</span></td><td><a href='https://www.acsstaff.org/skins/acs/default_secure.aspx' target='_blank' class='url'>https://www.acsstaff.org/skins/acs/default_secure.aspx</a><span>?</span></td></tr><tr><td><span>Arm FRG: Family Readiness Group</span></td><td><a href='https://www.armyfrg.org/skins/frg/home.aspx' target='_blank' class='url'>https://www.armyfrg.org/skins/frg/home.aspx</a></td></tr></tbody></table></figure><hr /><h2 id='finance'><span>Finance</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>FDM: Financial Disclosure Management</span></td><td><a href='https://www.fdm.army.mil/' target='_blank' class='url'>https://www.fdm.army.mil/</a></td></tr><tr><td><span>DFAS: Defense Finance and Accounting Service</span></td><td><a href='https://www.dfas.mil/' target='_blank' class='url'>https://www.dfas.mil/</a></td></tr><tr><td><span>Military Onesource</span></td><td><a href='https://www.militaryonesource.mil/' target='_blank' class='url'>https://www.militaryonesource.mil/</a></td></tr><tr><td><span>TSP: Thrift Savings Plans</span></td><td><a href='https://www.tsp.gov/' target='_blank' class='url'>https://www.tsp.gov/</a></td></tr></tbody></table></figure><hr /><h2 id='legal'><span>Legal</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>FDM: Financial Disclosure Management</span></td><td><a href='https://www.fdm.army.mil/' target='_blank' class='url'>https://www.fdm.army.mil/</a></td></tr><tr><td><span>Trial Defense Service</span></td><td><a href='https://www.mdwhome.mdw.army.mil/sja/trial-defense' target='_blank' class='url'>https://www.mdwhome.mdw.army.mil/sja/trial-defense</a></td></tr><tr><td><span>JAG University</span></td><td><a href='https://jagu.army.mil/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_22_1' target='_blank' class='url'>https://jagu.army.mil/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_22_1</a></td></tr><tr><td><span>JAG Corps: Judge Advocate General Corps</span></td><td><a href='https://www.goarmy.com/jag.html' target='_blank' class='url'>https://www.goarmy.com/jag.html</a></td></tr><tr><td><span>U.S. Armed Forces Legal Assistance</span></td><td><a href='https://legalassistance.law.af.mil/' target='_blank' class='url'>https://legalassistance.law.af.mil/</a></td></tr></tbody></table></figure><hr /><h2 id='combat-readiness'><span>Combat Readiness</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>Soldier Enhancement Program</span></td><td><a href='https://www.peosoldier.army.mil/SEP/' target='_blank' class='url'>https://www.peosoldier.army.mil/SEP/</a></td></tr><tr><td><span>DHAP: Deployment Health Assessment Program</span></td><td><a href='https://www.usar.army.mil/DHAP/' target='_blank' class='url'>https://www.usar.army.mil/DHAP/</a></td></tr><tr><td><span>USACRC: U.S. Army Combat Readiness Center</span></td><td><a href='https://safety.army.mil/' target='_blank' class='url'>https://safety.army.mil/</a></td></tr><tr><td><span>Army Readiness Assessment Program</span></td><td><a href='https://arap.safety.army.mil/' target='_blank' class='url'>https://arap.safety.army.mil/</a></td></tr><tr><td><span>Ground Risk Assessment Tool</span></td><td><a href='https://grat.safety.army.mil/GRAT/' target='_blank' class='url'>https://grat.safety.army.mil/GRAT/</a></td></tr><tr><td><span>ReportIT</span></td><td><a href='https://reportit.safety.army.mil/' target='_blank' class='url'>https://reportit.safety.army.mil/</a></td></tr><tr><td><span>RMIS: Risk Management Information System</span></td><td><a href='https://rmis.safety.army.mil/Login.aspx' target='_blank' class='url'>https://rmis.safety.army.mil/Login.aspx</a></td></tr><tr><td><span>TRiPS: Travel Risk Planning System</span></td><td><a href='https://trips.safety.army.mil/TRiPS' target='_blank' class='url'>https://trips.safety.army.mil/TRiPS</a></td></tr></tbody></table></figure><hr /><h2 id='professional-development'><span>Professional Development</span></h2><p><a href="army_resources.html"><span>Top</span></a></p><figure><table><thead><tr><th><span>Name</span></th><th><span>Link</span></th></tr></thead><tbody><tr><td><span>Army E-Learning</span></td><td><a href='https://www.pdmatis.army.mil/Army_e-Learning.html' target='_blank' class='url'>https://www.pdmatis.army.mil/Army_e-Learning.html</a></td></tr><tr><td><span>JAG University</span></td><td><a href='https://jagu.army.mil/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_22_1' target='_blank' class='url'>https://jagu.army.mil/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_22_1</a></td></tr><tr><td><span>Army Career Tracker</span></td><td><a href='https://actnow.army.mil/' target='_blank' class='url'>https://actnow.army.mil/</a></td></tr><tr><td><span>NCO leader Center for Excellence</span></td><td><a href='https://ncolcoe.armylive.dodlive.mil/' target='_blank' class='url'>https://ncolcoe.armylive.dodlive.mil/</a></td></tr><tr><td><span>Assignment Satisfaction Key</span></td><td><a href='https://www.ask.army.mil/ask' target='_blank' class='url'>https://www.ask.army.mil/ask</a></td></tr><tr><td><span>Army Skillport</span></td><td><a href='https://usarmy.skillport.com/skillportfe/custom/login/usarmy/login.action' target='_blank' class='url'>https://usarmy.skillport.com/skillportfe/custom/login/usarmy/login.action</a></td></tr><tr><td><span>CAPL: Center for the Army Professional and Leadership</span></td><td><a href='https://capl.army.mil/' target='_blank' class='url'>https://capl.army.mil/</a></td></tr><tr><td><span>Army National Guard G1 Personnel Gateway</span></td><td><a href='https://arngg1.ngb.army.mil/SelfService/CareerCenter/Home.aspx' target='_blank' class='url'>https://arngg1.ngb.army.mil/SelfService/CareerCenter/Home.aspx</a></td></tr></tbody></table></figure><p>&nbsp;</p></div></div>
+</body>
+</html>

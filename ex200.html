@@ -1,0 +1,733 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>ex200</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1>Red Hat Certified System Administrator Study Guide (EX200)</h1><p><a href='index.html'><span>Home</span></a></p><p><span> created and used this study guide and passed RHCSA. RHCA Version 8</span></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#objectives">Objectives</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6"><a class="md-toc-inner" href="#understand-and-use-essential-tools">Understand and use essential tools</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n8"><a class="md-toc-inner" href="#access-a-shell-prompt-and-issue-commands-with-correct-syntax">Access a shell prompt and issue commands with correct syntax</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n10"><a class="md-toc-inner" href="#use-input-output-redirection----2-etc">Use input-output redirection (&gt;, &gt;&gt;, |, 2&gt;, etc.)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n27"><a class="md-toc-inner" href="#use-grep-and-regular-expressions-to-analyze-text">Use grep and regular expressions to analyze text</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n53"><a class="md-toc-inner" href="#access-remote-systems-using-ssh">Access remote systems using SSH</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n64"><a class="md-toc-inner" href="#log-in-and-switch-users-in-multiuser-targets">Log in and switch users in multiuser targets</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n75"><a class="md-toc-inner" href="#archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2">Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n98"><a class="md-toc-inner" href="#create-and-edit-text-files">Create and edit text files</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n101"><a class="md-toc-inner" href="#create-delete-copy-and-move-files-and-directories">Create, delete, copy, and move files and directories</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n119"><a class="md-toc-inner" href="#create-hard-and-soft-links">Create hard and soft links</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n121"><a class="md-toc-inner" href="#list-set-and-change-standard-ugorwx-permissions">List, set, and change standard ugo/rwx permissions</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n129"><a class="md-toc-inner" href="#locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc">Locate, read, and use system documentation including man, info, and files in /usr/share/doc</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n149"><a class="md-toc-inner" href="#create-simple-shell-scripts-starts-with-binbash-end-exit-0">Create simple shell scripts (starts with #!/bin/bash end exit 0)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n152"><a class="md-toc-inner" href="#conditionally-execute-code-use-of-if-test--etc">Conditionally execute code (use of: if, test, [], etc.)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n154"><a class="md-toc-inner" href="#processing-output-of-shell-commands-within-a-script">Processing output of shell commands within a script</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n156"><a class="md-toc-inner" href="#processing-shell-command-exit-codes">Processing shell command exit codes</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n159"><a class="md-toc-inner" href="#operate-running-systems">Operate running systems</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n161"><a class="md-toc-inner" href="#boot-reboot-and-shut-down-a-system-normally">Boot, reboot, and shut down a system normally</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n163"><a class="md-toc-inner" href="#boot-systems-into-different-targets-manually">Boot systems into different targets manually</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n180"><a class="md-toc-inner" href="#interrupt-the-boot-process-in-order-to-gain-access-to-a-system">Interrupt the boot process in order to gain access to a system</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n215"><a class="md-toc-inner" href="#identify-cpumemory-intensive-processes-and-kill-processes">Identify CPU/memory intensive processes and kill processes</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n219"><a class="md-toc-inner" href="#adjust-process-scheduling">Adjust process scheduling</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n228"><a class="md-toc-inner" href="#processes-schedulingpolicy">Processes scheduling/policy</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n230"><a class="md-toc-inner" href="#manage-tuning-profiles">Manage tuning profiles</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n233"><a class="md-toc-inner" href="#locate-and-interpret-system-log-files-and-journals">Locate and interpret system log files and journals</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n296"><a class="md-toc-inner" href="#start-stop-and-check-the-status-of-network-services">Start, stop, and check the status of network services</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n313"><a class="md-toc-inner" href="#securely-transfer-files-between-systems">Securely transfer files between systems</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n316"><a class="md-toc-inner" href="#configure-local-storage">Configure local storage</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n318"><a class="md-toc-inner" href="#list-create-delete-partitions-on-mbr-and-gpt-disks">List, create, delete partitions on MBR and GPT disks</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n365"><a class="md-toc-inner" href="#create-and-remove-physical-volumes-pv">Create and remove physical volumes (PV)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n379"><a class="md-toc-inner" href="#assign-volume-groups-vg-to-physical-volumes-pv">Assign Volume Groups (VG) to Physical Volumes (PV)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n402"><a class="md-toc-inner" href="#create-and-delete-logical-volumes-lv">Create and delete logical volumes (LV)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n416"><a class="md-toc-inner" href="#format-newly-created-partionslvs-with-filesystems">Format newly created partions/LV's with filesystems</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n430"><a class="md-toc-inner" href="#configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label">Configure systems to mount file systems at boot by universally unique ID (UUID) or label</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n441"><a class="md-toc-inner" href="#add-swap-to-lv-adding-to-etcfstab-non-destructively">Add swap to LV adding to /etc/fstab (non-destructively)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n456"><a class="md-toc-inner" href="#create-and-configure-file-systems">Create and configure file systems</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n458"><a class="md-toc-inner" href="#create-mount-unmount-and-use-vfat-ext4-and-xfs-file-systems">Create, mount, unmount, and use vfat, ext4, and xfs file systems</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n478"><a class="md-toc-inner" href="#mount-and-unmount-network-file-systems-using-nfs">Mount and unmount network file systems using NFS</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n499"><a class="md-toc-inner" href="#extend-existing-logical-volumes">Extend existing logical volumes</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n501"><a class="md-toc-inner" href="#create-and-configure-set-gid-directories-for-collaboration">Create and configure set-GID directories for collaboration</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n511"><a class="md-toc-inner" href="#configure-disk-compression">Configure disk compression</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n525"><a class="md-toc-inner" href="#manage-layered-storage-stratisxfs---local-storage-manag-auto-growsnapshots">Manage layered storage (stratis(xfs) - local storage manag. Auto grow,snapshots)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n559"><a class="md-toc-inner" href="#diagnose-and-correct-file-permission-problems">Diagnose and correct file permission problems</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n561"><a class="md-toc-inner" href="#deploy-configure-and-maintain-systems">Deploy, configure, and maintain systems</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n563"><a class="md-toc-inner" href="#schedule-tasks-using-at-and-cron">Schedule tasks using at and cron</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n585"><a class="md-toc-inner" href="#start-and-stop-services-and-configure-services-to-start-automatically-at-boot">Start and stop services and configure services to start automatically at boot</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n602"><a class="md-toc-inner" href="#configure-time-service-clients">Configure time service clients</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n616"><a class="md-toc-inner" href="#install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system">Install and update software packages from Red Hat Network, a remote repository, or from the local file system</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n662"><a class="md-toc-inner" href="#work-with-package-module-streams">Work with package module streams</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n688"><a class="md-toc-inner" href="#modify-the-system-bootloader">Modify the system bootloader</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n696"><a class="md-toc-inner" href="#manage-basic-networking">Manage basic networking</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n698"><a class="md-toc-inner" href="#configure-ipv4-and-ipv6-addresses">Configure IPv4 and IPv6 addresses</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n705"><a class="md-toc-inner" href="#configure-hostname">Configure hostname</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n707"><a class="md-toc-inner" href="#configure-hostname-resolution">Configure hostname resolution</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n709"><a class="md-toc-inner" href="#configure-network-services-to-start-automatically-at-boot">Configure network services to start automatically at boot</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n711"><a class="md-toc-inner" href="#restrict-network-access-using-firewall-cmdfirewall">Restrict network access using firewall-cmd/firewall</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n746"><a class="md-toc-inner" href="#manage-users-and-groups">Manage users and groups</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n748"><a class="md-toc-inner" href="#create-delete-and-modify-local-user-accounts">Create, delete, and modify local user accounts</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n763"><a class="md-toc-inner" href="#change-passwords-and-adjust-password-aging-for-local-user-accounts">Change passwords and adjust password aging for local user accounts</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n766"><a class="md-toc-inner" href="#create-delete-and-modify-local-groups-and-group-memberships">Create, delete, and modify local groups and group memberships</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n783"><a class="md-toc-inner" href="#configure-superuserroot-access">Configure Superuser(root) access</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n785"><a class="md-toc-inner" href="#manage-security">Manage security</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n787"><a class="md-toc-inner" href="#create-and-use-file-access-control-lists">Create and use file access control lists</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n807"><a class="md-toc-inner" href="#configure-key-based-authentication-for-ssh">Configure key-based authentication for SSH</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n819"><a class="md-toc-inner" href="#set-enforcing-and-permissive-modes-for-selinux">Set enforcing and permissive modes for SELinux</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n821"><a class="md-toc-inner" href="#list-and-identify-selinux-file-and-process-context">List and identify SELinux file and process context</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n841"><a class="md-toc-inner" href="#restore-default-file-contexts">Restore default file contexts</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n843"><a class="md-toc-inner" href="#use-boolean-settings-to-modify-system-selinux-settings">Use boolean settings to modify system SELinux settings</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n860"><a class="md-toc-inner" href="#diagnose-and-address-routine-selinux-policy-violations">Diagnose and address routine SELinux policy violations</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n874"><a class="md-toc-inner" href="#manage-containers">Manage containers</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n876"><a class="md-toc-inner" href="#create-rootless-container">Create rootless container </a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n883"><a class="md-toc-inner" href="#find-and-retrieve-container-images-from-a-remote-registry">Find and retrieve container images from a remote registry</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n903"><a class="md-toc-inner" href="#inspect-container-images">Inspect container images</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n906"><a class="md-toc-inner" href="#perform-container-management-using-commands-such-as-podman-and-skopeoattach-persistent-storageport-forwardingrun-service-inside-container">Perform container management using commands such as podman and skopeo/attach persistent storage/port forwarding/run service inside container</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n936"><a class="md-toc-inner" href="#perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers">Perform basic container management such as running, starting, stopping, and listing running containers</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n962"><a class="md-toc-inner" href="#configure-a-container-to-start-automatically-as-a-systemd-service">Configure a container to start automatically as a systemd service</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n991"><a class="md-toc-inner" href="#configure-rsyslog-to-log-all-messages-to-specific-priority">Configure Rsyslog to log all messages to specific priority</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n994"><a class="md-toc-inner" href="#use-a-directory-to-store-tmp-files-delete-after-a-specific-time">Use a directory to store tmp files (delete after a specific time)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n997"><a class="md-toc-inner" href="#autofs-to-automate-directories">Autofs to automate directories</a></span></p></div><h2 id='objectives'><span>Objectives</span></h2><h3 id='understand-and-use-essential-tools'><span>Understand and use essential tools</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='access-a-shell-prompt-and-issue-commands-with-correct-syntax'><span>Access a shell prompt and issue commands with correct syntax</span></h4><p><span>use </span><tab><span> </span><tab><span>, man pages, -h, info on commands you need help with</span></p><h4 id='use-input-output-redirection----2-etc'><span>Use input-output redirection (&gt;, &gt;&gt;, |, 2&gt;, etc.)</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>echo “text OR file” &gt; newfile.txt</code></td><td><span>create a file</span></td></tr><tr><td><code>echo “text OR file” &gt;&gt; newfile.txt</code></td><td><span>add to/append to a file</span></td></tr><tr><td><code>find / -name *.txt 2&gt;/dev/null</code></td><td><span>redirects errors to null</span></td></tr><tr><td><code>|</code></td><td><span>take the output of the first command and send to second command </span><code>cat /etc/passwd | less</code></td></tr></tbody></table></figure><h4 id='use-grep-and-regular-expressions-to-analyze-text'><span>Use grep and regular expressions to analyze text</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>cut -d : -f 1 /etc/passwd</code></td><td><span>displays first column of /etc/passwd : as separator</span></td></tr><tr><td><code>wc</code></td><td><span>show lines,words, characters        90 (lines) 1045 (words) 7583(characters)</span></td></tr><tr><td><code>grep</code></td><td><span>search for term or regexp</span></td></tr><tr><td>&nbsp;</td><td><code>^ann</code><span>  begin with ann</span></td></tr><tr><td>&nbsp;</td><td><code>ann$</code><span>  end with ann</span></td></tr><tr><td>&nbsp;</td><td><code>-v ann</code><span> dont display ann, </span><code>-r</code><span> search through all directory, </span><code>-e</code><span> more than 1 reg expression</span></td></tr><tr><td>&nbsp;</td><td><code>.</code><span> any single char, </span><code>[abc]</code><span> a b or c, </span><code>\{2\}</code><span> matches exactly 2 of previous character</span></td></tr></tbody></table></figure><h4 id='access-remote-systems-using-ssh'><span>Access remote systems using SSH</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>ssh username@remote</code></td><td><span>use a password to login using ssh</span></td></tr><tr><td><code>ssh -i .ssh/key.pub username@remote</code></td><td><span>use ssh key to login to remote system</span></td></tr></tbody></table></figure><h4 id='log-in-and-switch-users-in-multiuser-targets'><span>Log in and switch users in multiuser targets</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>su - &lt;username&gt;</code></td><td><span>switch user</span></td></tr><tr><td><code>`sudo -i</code><span> `</span></td><td><span>change to root , provide root password</span></td></tr></tbody></table></figure><h4 id='archive-compress-unpack-and-uncompress-files-using-tar-star-gzip-and-bzip2'><span>Archive, compress, unpack, and uncompress files using tar, star, gzip, and bzip2</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>tar</code></td><td>&nbsp;</td></tr><tr><td><code>-cvf name.tar /file/to/be/tar’d</code></td><td><span>create tar</span></td></tr><tr><td><code>-xvf name.tar</code></td><td><span>extract tar, best to copy .tar to directory and cd into it</span></td></tr><tr><td><code>-rvf .tar /file/to/add</code></td><td><span>add file to archive</span></td></tr><tr><td><code>-cjvf name.tar /what/to/tar</code></td><td><span>creates bzip2 compression. Using tar will automatically decompress bzip2 or use </span><code>bunzip2</code></td></tr><tr><td><code>-czvf name.tar /what/to/tar</code></td><td><span>creates gzip compression. tar will automatically decompress gzip or use </span><code>gunzip</code></td></tr></tbody></table></figure><h4 id='create-and-edit-text-files'><span>Create and edit text files</span></h4><p><a href="ex200.html"><span>Top</span></a></p><p><span>Always use  </span><code>vim &lt;file&gt;</code>
+<span>			</span><code>dd</code><span> delete line</span>
+<span>			</span><code>yy</code><span> copy line</span>
+<span>			</span><code>P</code><span>   paste line</span>
+<span>			</span><code>V</code><span>   for visual mode</span></p><h4 id='create-delete-copy-and-move-files-and-directories'><span>Create, delete, copy, and move files and directories</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>touch &lt;file&gt;</code><span> or </span><code>echo &quot;text&quot; &gt; file.txt</code><span> or </span><code>vim /path/file</code></td><td><span>create files</span></td></tr><tr><td><code>rm &lt;file&gt;</code><span> add  </span><code>-r</code><span>  to remove directories</span></td><td><span>remove file/directories</span></td></tr><tr><td><code>cp &lt;source&gt; &lt;destination&gt;</code><span>  you can also rename with cp</span></td><td><span>copy or rename</span></td></tr><tr><td><code>mv &lt;source&gt; &lt;destination&gt;</code></td><td><span>move or rename files</span></td></tr></tbody></table></figure><p><span>	</span><span>*Use </span><code>-r</code><span> in most situations to move directories and all files </span></p><h4 id='create-hard-and-soft-links'><span>Create hard and soft links</span></h4><p><code>ln source/ &lt;hardlinkname&gt;</code>
+<code>ln -s source/ &lt;softlinkname&gt;</code></p><h4 id='list-set-and-change-standard-ugorwx-permissions'><span>List, set, and change standard ugo/rwx permissions</span></h4><p><code>chown user:group /file/directory</code><span> </span><span>							</span><span>change </span><user><span>:</span><group><span> ownership</span>
+<code>chmod 755 /file/directory</code><span>      </span><span>								</span><span>      change permissions</span></p><ul><li><span>R(4), W(2), X(1)</span></li><li><span>750 - User RWX, Group RX, Other None</span></li></ul><p><code>chmod g+s /file/directory</code><span>  </span><span>					</span><span> add special permissions, file gain permissions of group permissions</span>
+<code>chmod o+t /file/directory</code><span> </span><span>					</span><span>  user can only delete the files they create no one else&#39;s</span>
+<code>ls -latr /file</code><span> , </span><code>ls -ld /directory</code><span>	</span><span>  list info for files/directories</span></p><h4 id='locate-read-and-use-system-documentation-including-man-info-and-files-in-usrsharedoc'><span>Locate, read, and use system documentation including man, info, and files in /usr/share/doc</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>man &lt;command&gt;</code></td><td><span>manual/help pages</span></td></tr><tr><td><code>man -k &lt;command&gt;</code></td><td><span>shows different man pages for that command</span></td></tr><tr><td><code>info &lt;command&gt;</code></td><td><span>another way to get help. may need to install it</span></td></tr><tr><td>&nbsp;</td><td><span>space for next page, highlight section and enter, p for previous page</span></td></tr><tr><td><code>ls /usr/share/doc |grep &lt;package&gt;</code></td><td><span>often contain configuration files</span></td></tr></tbody></table></figure><h3 id='create-simple-shell-scripts-starts-with-binbash-end-exit-0'><span>Create simple shell scripts (starts with #!/bin/bash end exit 0)</span></h3><p><a href="ex200.html"><span>Top</span></a></p><p><span>Make script executable </span><code>chmod +x script.sh</code><span>, run </span><code>./script.sh</code></p><h4 id='conditionally-execute-code-use-of-if-test--etc'><span>Conditionally execute code (use of: if, test, [], etc.)</span></h4><p><span>Use Looping constructs (for, etc.) to process file, command line input</span>
+<code>for i in 1 2 3 4; do useradd -G &lt;sup group&gt; username$i; done</code>
+<span>Process script inputs ($1, $2, etc.)</span>
+<span>$1, $2 are the arguments provided to the script</span></p><h4 id='processing-output-of-shell-commands-within-a-script'><span>Processing output of shell commands within a script</span></h4><p><span>You can add &gt; to commands in script to output to file</span></p><h4 id='processing-shell-command-exit-codes'><span>Processing shell command exit codes</span></h4><p><code>exit 0</code></p><p>&nbsp;</p><h3 id='operate-running-systems'><span>Operate running systems</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='boot-reboot-and-shut-down-a-system-normally'><span>Boot, reboot, and shut down a system normally</span></h4><p><code>systemctl reboot</code>
+<code>systemctl poweroff</code></p><h4 id='boot-systems-into-different-targets-manually'><span>Boot systems into different targets manually</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>systemctl get-default</code></td><td><span>get default target</span></td></tr><tr><td><code>systemctl isolate &lt;mutli-user.target|graphical.target&gt;</code></td><td><span>set target interactively</span></td></tr><tr><td><code>systemctl set-default multi-user.target|graphical|rescue.target</code></td><td><span>set target</span></td></tr><tr><td><code>systemctl reboot</code></td><td><span>reboot for target to take effect</span></td></tr></tbody></table></figure><h4 id='interrupt-the-boot-process-in-order-to-gain-access-to-a-system'><span>Interrupt the boot process in order to gain access to a system</span></h4><p><span>Fix mount issue: </span></p><ol start='' ><li><code>e</code><span> at grub loader</span></li><li><span>at the end of the linux line append </span><code>systemd.unit=emergency</code><span> </span></li><li><code>ctrl +x</code><span> to reboot</span></li><li><span>enter root password for maintenance</span></li><li><span>remount filesystem to rw  </span><code>mount -o remount,rw /</code></li><li><span>analyze /etc/fstab and fix/comment out issues </span></li><li><span>reboot</span></li></ol><p><span>Reset Root pass: </span></p><ol start='' ><li><code>e</code><span> at grub loader,</span></li><li><span>at the end of the linux line append </span><code>rd.break</code></li><li><code>ctrl + x</code><span> to reboot</span></li><li><span>remount filesystem to rw  </span><code>mount -o remount,rw /sysroot</code></li><li><span>change root </span><code>chroot /sysroot</code></li><li><code>passwd &lt;newpassword&gt;</code><span> </span></li><li><span>set up system to relabel (SELinux)   </span><code>touch /.autorelabel</code></li><li><span>reboot</span></li></ol><h4 id='identify-cpumemory-intensive-processes-and-kill-processes'><span>Identify CPU/memory intensive processes and kill processes</span></h4><p><code>top</code><span>    show live view of processes</span></p><p><span>	</span><span> </span><code>c</code><span>  sort by cpu usage, </span><code>m</code><span> sort by memory usage , </span><code>k</code><span> to kill process, followed by PID and enter</span></p><p><code>kill &lt;-9|SIGKILL&gt; &lt;PID&gt;</code></p><h4 id='adjust-process-scheduling'><span>Adjust process scheduling</span></h4><p><code>renice -n &lt;#|10&gt; &lt;PID&gt;</code><span>    change priorty level of a process</span></p><ul><li><span>Changes priority within SYSTEM_OTHER only</span></li><li><span>-20 (highest priority) , 0 (default), 19 (lowest priority)</span></li><li><span>you can also use top with </span><code>r</code><span> to renice</span></li></ul><h4 id='processes-schedulingpolicy'><span>Processes scheduling/policy</span></h4><p><code>chrt -p &lt;PID&gt;</code><span> </span><span>										</span><span>retrieve real time attributes of a task/process</span>
+<code>chrt -r|b|f -p &lt;priority&gt; &lt;PID&gt;</code><span>	</span><span>changes priority class and level of process policy</span>
+<span>																</span><span>  </span><span>	</span><code>-f</code><span> for first in first out, </span><code>-b</code><span> for batch</span>
+<code>chrt -m</code><span> </span><span>													</span><span> see priorities and expected range (min-max)</span></p><h4 id='manage-tuning-profiles'><span>Manage tuning profiles</span></h4><p><a href="ex200.html"><span>Top</span></a></p><p><span>ensure  tuned service is enabled and running/started </span><code>yum install tuned</code><span>, systemctl start and enable tuned</span>
+<span>	</span><code>tuned-adm active</code><span>  </span><span>						</span><span>show current profile</span>
+<span>	</span><code>tuned-adm recommend</code><span>					</span><span>shows recommended profile</span>
+<span>	</span><code>tuned-adm profile &lt;choice&gt;</code><span> </span><span>	</span><span>change tuned profile</span></p><h4 id='locate-and-interpret-system-log-files-and-journals'><span>Locate and interpret system log files and journals</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>/var/log</code></td><td><span>log location</span></td></tr><tr><td><code>/var/log/audit/audit.log</code></td><td><span>selinux logs</span></td></tr><tr><td><code>sealert -a /var/log/audit/audit.log</code></td><td><span>search through selinux errors/alerts</span></td></tr><tr><td><code>systemctl status &lt;service|sshd&gt; -l</code></td><td><span>Show relevant log information (shows at bottom)</span></td></tr><tr><td><span>Log elements</span></td><td><span>Date and Time </span><span>|</span><span>  host </span><span>|</span><span> Serice/Process </span><span>|</span><span> Message Content</span></td></tr><tr><td><code>tail -f &lt;/log/location&gt;</code></td><td><span>monitor logs</span></td></tr><tr><td><code>logger &quot;message&quot;</code></td><td><span>writes to rsyslog</span></td></tr><tr><td>&nbsp;</td><td><span>Specify priority and facility  with </span><code>-p</code><span> (like kern.error, debug)</span></td></tr><tr><td><code>man 5 rsyslog</code></td><td><span>read rsyslog man page for info    </span><code>man logrotate</code></td></tr><tr><td><code>journalctl</code></td><td><span>shows recent events (</span><tab><span> </span><tab><span> for more info)</span></td></tr><tr><td>&nbsp;</td><td><code>-f</code><span> show last lines</span></td></tr><tr><td>&nbsp;</td><td><code>G</code><span> go to the end of the log</span></td></tr><tr><td>&nbsp;</td><td><code>-p</code><span>  errors only</span></td></tr><tr><td><code>journalctl --since YYYY-MM-DD hh:mm:ss --until YYYY-MM-DD hh:mm:ss</code></td><td><span>you can also use Today, Yesterday in place of date</span></td></tr><tr><td><code>_SYSTEM_UNIT=sshd.service</code></td><td><span>show info about a specific service</span></td></tr></tbody></table></figure><p><span>Preserve system journals</span></p><ol start='' ><li><p><code>mkdir /var/log/journal</code></p></li><li><p><span>Configure </span><code>/etc/systemd/journal.conf</code><span> </span></p><p><span>	</span><span>Storage = auto/persistent/none/volatile. auto will work in most situations</span></p></li><li><p><code>chown root:systemd-journal /var/log/journal</code></p></li><li><p><code>chmod 2755 /var/log/journal</code></p></li><li><p><code>systemctl restart systemd-journald</code></p></li></ol><h4 id='start-stop-and-check-the-status-of-network-services'><span>Start, stop, and check the status of network services</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>ip addr</code><span>    </span><code>ip -s link show</code></td><td><span>check status</span></td></tr><tr><td><code>ip link set dev &lt;eth0&gt; up</code><span> or down</span></td><td><span>start/stop links</span></td></tr><tr><td><code>ping -c2 &lt;IP&gt;</code></td><td><span>ping target</span></td></tr><tr><td><code>ss -auntp</code></td><td><span>just like netstat -auntp (show network connections)</span></td></tr></tbody></table></figure><h4 id='securely-transfer-files-between-systems'><span>Securely transfer files between systems</span></h4><p><code>scp &lt;/source/file.txt&gt; &lt;username&gt;@&lt;remote servername&gt;:&lt;/destination/location&gt;</code>
+<span>	</span><span>Use </span><code>-i .ssh/key</code><span> for key authentication</span></p><p>&nbsp;</p><h3 id='configure-local-storage'><span>Configure local storage</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='list-create-delete-partitions-on-mbr-and-gpt-disks'><span>List, create, delete partitions on MBR and GPT disks</span></h4><p><strong><code>fidsk /dev/device (MBR)</code></strong></p><figure><table><thead><tr><th><span>Option</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>h</code></td><td><span>help</span></td></tr><tr><td><code>n</code></td><td><span>New partition</span></td></tr><tr><td><code>p</code></td><td><span>list/display or </span><code>fidsk -l /dev/device</code></td></tr><tr><td><code>t</code></td><td><span>for type, then L to list all available types 83 (linux), 82 (swap), 8e(lvm)</span></td></tr><tr><td><code>d</code></td><td><span>delete a partition</span></td></tr><tr><td><code>w</code></td><td><span>write changes to partition/disk</span></td></tr></tbody></table></figure><p><strong><code>gdisk /dev/device</code><span> (GPT)</span></strong></p><figure><table><thead><tr><th><span>Option</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>?</code></td><td><span>help</span></td></tr><tr><td><code>n</code></td><td><span>new partition</span></td></tr><tr><td><code>w</code></td><td><span>write changes to partition/disk</span></td></tr><tr><td><code>p</code></td><td><span>list/display disk information</span></td></tr><tr><td><code>d</code></td><td><span>delete a partition</span></td></tr><tr><td><code>L</code></td><td><span>list all available types 8300 (linux), 8200 (swap), 8e00 (lvm)</span></td></tr></tbody></table></figure><h4 id='create-and-remove-physical-volumes-pv'><span>Create and remove physical volumes (PV)</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a Physical Volume. Initialize disk for use by LVM</span></td><td><code>pvcreate /dev/&lt;device&gt;</code></td></tr><tr><td><span>show physical volumes</span></td><td><code>pvs</code></td></tr><tr><td><span>remove physical volumes</span></td><td><code>pvremove /dev/&lt;device&gt;</code></td></tr></tbody></table></figure><h4 id='assign-volume-groups-vg-to-physical-volumes-pv'><span>Assign Volume Groups (VG) to Physical Volumes (PV)</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a volume group on a physical volume</span></td><td><code>vgcreate &lt;vgname&gt; /dev/sdb1</code></td></tr><tr><td>&nbsp;</td><td><code>-s</code><span> to specify physical extends</span></td></tr><tr><td><span>remove volume group</span></td><td><code>vgremove &lt;vgname&gt;</code></td></tr><tr><td><span>display volume groups</span></td><td><code>vgs</code></td></tr><tr><td><span>extend a volume group</span></td><td><code>vgextend &lt;vgname&gt; /dev/sdb21</code></td></tr><tr><td><span>reduce the size of a volume group</span></td><td><code>vgreduce &lt;vgname&gt; /dev/sdb1  (only works on GPT)</code></td></tr></tbody></table></figure><h4 id='create-and-delete-logical-volumes-lv'><span>Create and delete logical volumes (LV)</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a logical volume</span></td><td><code>lvcreate -L +#GB -n &lt;lvname&gt; &lt;vgname&gt; /dev/sdb1</code></td></tr><tr><td>&nbsp;</td><td><span>make sure to you the + to specify size of the LV. +1MB, +2GB ... etc</span></td></tr><tr><td><span>remove Logical Volume</span></td><td><code>lvremove /dev/sdb1/&lt;lvname&gt;</code></td></tr></tbody></table></figure><h4 id='format-newly-created-partionslvs-with-filesystems'><span>Format newly created partions/LV&#39;s with filesystems</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a xfs filesystem on newly created Logical Volume</span></td><td><code>mkfs -t xfs /dev/mapper/&lt;vgname&gt;/&lt;lvname&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>lsblk</code><span> to verify</span></td></tr><tr><td>&nbsp;</td><td><code>-L &lt;label&gt;</code><span> to give your filesystem a label used instead of UUID</span></td></tr></tbody></table></figure><h4 id='configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label'><span>Configure systems to mount file systems at boot by universally unique ID (UUID) or label</span></h4><ol start='' ><li><p><span>Get the uuid of the device to add to fstab</span></p><p><span>		</span><code>lsblk -o UUID /dev/&lt;device&gt;</code><span>  </span><span>	</span></p></li><li><p><span>Create mount point</span></p><p><span>		</span><code>mkdir /mountpoint</code></p></li><li><p><code>vim /etc/fstab</code><span> at the bottom add:</span></p><p><span>		</span><code>UUID= &lt;uuid found above&gt;    /mountpoint       &lt;filesystem|xfs|ext4&gt;          defaults       0   0</code><span> </span></p></li></ol><h4 id='add-swap-to-lv-adding-to-etcfstab-non-destructively'><span>Add swap to LV adding to /etc/fstab (non-destructively)</span></h4><ol start='' ><li><p><code>lvcreate -n &lt;name|swap1&gt; -L +2G &lt;vgname&gt;</code></p></li><li><p><code>mkswap /dev/&lt;vgname&gt;/swap1</code></p><p><span>	</span><code>-L &lt;label&gt;</code><span> to add a label to your swap </span></p></li><li><p><code>swapon /dev/&lt;vgname&gt;/swap1</code>
+<span>    </span><code>swapon -s</code><span> to verify</span></p><p><span>          </span><code>swapon -a</code><span>  turn on all swaps</span>
+<span>​          </span><code>swapoff /dev/&lt;vgname&gt;/swap1</code><span>  to remove</span></p></li><li><p><span>Add to /etc/fstab</span></p><p><span>          </span><code>vim /etc/fstab</code><span> at the end add:</span></p><p><span>		</span><span>  `UUID=&lt;uuid found with lsblk -o UUID&gt;      swap       swap        defaults        0     0</span></p><p>&nbsp;</p></li></ol><h3 id='create-and-configure-file-systems'><span>Create and configure file systems</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='create-mount-unmount-and-use-vfat-ext4-and-xfs-file-systems'><span>Create, mount, unmount, and use vfat, ext4, and xfs file systems</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>mkfs -t xfs,ext4,vfat /dev/&lt;vgname&gt;/&lt;lvname&gt; -L &lt;label&gt;</code></td><td><span>create filesystems on LVM</span></td></tr><tr><td><code>xfs_admin -L &lt;newlabel&gt; /dev/device</code></td><td><span>add a label to xfs</span></td></tr><tr><td><code>mount /dev/&lt;vgname&gt;/&lt;lvname&gt; /mountpoint</code></td><td><span>mount destructivley (will not persist when rebooted)</span></td></tr><tr><td><code>umount /mountpoint</code></td><td><span>un mount a mount</span></td></tr><tr><td><span>for persistent mount see step 3  (mount by UUID)</span></td><td>&nbsp;</td></tr></tbody></table></figure><h4 id='mount-and-unmount-network-file-systems-using-nfs'><span>Mount and unmount network file systems using NFS</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>showmount -e &lt;host&gt;</code></td><td><span>show mounts on remote/local server</span></td></tr><tr><td><code>yum install nfs-utils</code></td><td><span>install nfs-utils</span></td></tr><tr><td><code>mount -t nfs &lt;IP/FQDN&gt;:/remoteshare/location /mountlocation</code></td><td><span>mount the share location to a mount point</span></td></tr><tr><td><code>umount /mountlocation</code></td><td><span>un mount the nfs mount</span></td></tr><tr><td><code>vim/fstab</code></td><td><span>persistent nfs mount</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span> IP/FQDN:/remoteshare/location /mountpoint  nfs  rw.sync  0  0<span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><h4 id='extend-existing-logical-volumes'><span>Extend existing logical volumes</span></h4><p><code>vgdisplay</code><span> </span><code>lvdisplay</code><span> to ensure you have enough space</span>
+<span>	</span><code>lvextend -L +1GB /dev/&lt;vgname&gt;/&lt;lvname&gt;</code>
+<span>Extend filesystem - check with </span><code>df -Th</code>
+<span>	</span><code>xfs_growfs /dev/&lt;vgname&gt;/&lt;lvname&gt;</code></p><h4 id='create-and-configure-set-gid-directories-for-collaboration'><span>Create and configure set-GID directories for collaboration</span></h4><ol start='' ><li><code>groupadd &lt;group&gt;</code></li><li><code>chown user:group /directory</code></li><li><code>chmod g+s /directory</code></li><li><code>chmod 770 /directory</code></li></ol><h4 id='configure-disk-compression'><span>Configure disk compression</span></h4><p><span>       install vdo and kmod-kvod for disk compression</span></p><ol start='' ><li><p><code>yum install vdo kmod-kvdo</code><span>			</span></p><p><span>create the vdo on devise and specify logical size</span><span>																				</span><span>                   </span><span>	</span></p></li><li><p><code>vdo create --name=&lt;name&gt; --device=/dev/&lt;device&gt; --vdoLogicalSize=30GB</code><span>	</span><span>                   </span></p><p><span>add a filesystem to vdo disk</span></p></li><li><p><code>mkfs -t xfs -K /dev/mapper/&lt;vdoname&gt;</code><span>			</span></p><p><span>make persistent in /etc/fstab</span><span>																		</span><span>       </span></p></li><li><p><code>UUID=&lt;UUID&gt;  /mountpoint  xfs   defaults,x-systemd.requires=vdo.service   0   0</code><span>   </span></p></li></ol><h4 id='manage-layered-storage-stratisxfs---local-storage-manag-auto-growsnapshots'><span>Manage layered storage (stratis(xfs) - local storage manag. Auto grow,snapshots)</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>yum install stratisd stratis-cli</code></td><td><span>install startisd and stratis-cli</span></td></tr><tr><td><code>systemctl status|start|enable stratisd</code></td><td><span>start, enable, and check status of stratisd</span></td></tr><tr><td><code>stratis pool create &lt;stratisname&gt; /dev/sdb</code></td><td><span>create statris pool you can add mulitple /devs if you want</span></td></tr><tr><td><code>stratis fs create &lt;stratisname&gt; fs1</code></td><td><span>create a filesystem on stratis with the name of fs1</span></td></tr><tr><td><code>stratis fs list &lt;stratisname&gt;</code></td><td><span>list info on the stratis device</span></td></tr><tr><td><code>mount /stratis/&lt;stratisname&gt;/fs1</code><span> </span><code>/mount point</code></td><td><span>mount destructivley</span></td></tr><tr><td><code>stratis pool add-data &lt;stratisname&gt; /dev/to/add</code></td><td><span>add additional data to stratis pool</span></td></tr><tr><td><code>stratis fs snapshot &lt;stratisname&gt; fs1 snapshot1</code></td><td><span>create a snapshot of your stratis pool (you can mount the snapshot)</span></td></tr><tr><td><code>stratis fs destroy &lt;stratisname&gt;</code></td><td><span>destroy statis device</span></td></tr></tbody></table></figure><p><span>add to fstab for a persistent mount</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">uuid=&lt;UUID&gt; &nbsp; /mnt &nbsp;  xfs &nbsp;  defaults,x-systemd.requires=stratisd.service &nbsp; &nbsp; 0 &nbsp; 0</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><h4 id='diagnose-and-correct-file-permission-problems'><span>Diagnose and correct file permission problems</span></h4><p><code>ls -latrh</code><span> , or use </span><code>getfacl &lt;file/directory to check&gt;</code>
+<code>chmod</code><span> and </span><code>chown</code><span> to fix/edit permissions</span>
+<span>Edit default umask (more on </span><a href='rh124.html'><span>umask</span></a><span>)</span>
+<span>	</span><span>As the user  </span><code>echo “umask 0700” &gt; ./bashrc</code><span> AND  </span><code>echo “umask 0700” &gt;./bash_profile</code></p><h3 id='deploy-configure-and-maintain-systems'><span>Deploy, configure, and maintain systems</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='schedule-tasks-using-at-and-cron'><span>Schedule tasks using at and cron</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>systemctl status crond</code></td><td><span>check status of crond</span></td></tr><tr><td><code>at &lt;time|noon|teatime&gt;</code></td><td><span>schedule a job to run once</span></td></tr><tr><td>&nbsp;</td><td><span>enter command to run then </span><code>Ctrl +D</code><span> to exit</span></td></tr><tr><td>&nbsp;</td><td><code>at</code><span>q  to see jobs scheduled</span></td></tr><tr><td><code>crontab -e</code></td><td><span>create chron job</span></td></tr></tbody></table></figure><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Min (0-59) &nbsp;  hour(0-23) &nbsp;  dayofmonth(1-31)  month(Jan-Dec) &nbsp;  dayofweek(1-5|Mon-Fri)0Sun,6Sat)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  <span class="cm-tab" role="presentation" cm-text="	">    </span>0 */2 * * * &nbsp; would set for every 2 hours</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>* * * * * message or command to run</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="display: none; height: 115px;"></div></div></div></pre><p>&nbsp;</p><h4 id='start-and-stop-services-and-configure-services-to-start-automatically-at-boot'><span>Start and stop services and configure services to start automatically at boot</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>systemctl stop &lt;service&gt;</code></td><td><span>stop service</span></td></tr><tr><td><code>systemctl start &lt;service&gt;</code></td><td><span>start service</span></td></tr><tr><td><code>systemctl reload|restart &lt;service&gt;</code></td><td><span>reload /restart service</span></td></tr><tr><td><code>systemctl enable &lt;service&gt;</code></td><td><span>enable service to start at boot</span></td></tr></tbody></table></figure><h4 id='configure-time-service-clients'><span>Configure time service clients</span></h4><p><span>Configure network time protocol in </span><code>/etc/chrony.conf</code>
+<code>timedatectl set-ntp 1</code><span>										</span><span> enable ntp services (if error, </span><code>yum -y install chrony</code><span>)</span><span>	</span></p><ul><li><p><span>set-time</span><span>			</span></p></li><li><p><span>set-timezone (tzselect)</span></p><ul><li><span>set-ntp</span></li></ul></li></ul><p><span>Service clients in chrony config </span></p><p><span>	</span><code>systemctl start|enable|status chrony</code></p><p><span>	</span><code>vim /etc/chrony.conf</code>
+<span>​</span><span>	</span><code>cat /etc/chrony.conf | grep servers</code></p><p><span>	</span><span>add in Public pool the ip/server to add</span></p><h4 id='install-and-update-software-packages-from-red-hat-network-a-remote-repository-or-from-the-local-file-system'><span>Install and update software packages from Red Hat Network, a remote repository, or from the local file system</span></h4><p><span>Add repository</span>
+<span>	</span><code>vim /etc/yum.repos.d/&lt;name&gt;.repo</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[name]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">name= &lt;name&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">baseurl= repository.example.com</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">gpgcheck=0 </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">gpgkey=&lt;key&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="display: none; height: 115px;"></div></div></div></pre><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>yum search &lt;package&gt;</code></td><td><span>search for a package</span></td></tr><tr><td><code>yum repolist all</code></td><td><span>list repos</span></td></tr><tr><td><code>yum repoinfo &lt;package&gt;</code></td><td><span>get repo information</span></td></tr><tr><td><code>yum remove &lt;package&gt;</code></td><td><span>remove a package</span></td></tr><tr><td><code>yum provides &quot;/bin/package | program&quot;</code></td><td><span>see what packages are provided to a package/command</span></td></tr><tr><td><code>yum localinstall &lt;package name&gt;</code></td><td><span>install a package installed locally</span></td></tr><tr><td><code>yum group list|remove|install</code></td><td><span>list / remove/install group packages</span></td></tr><tr><td><code>yum-config-manage --add-repo http://repo.example.com</code></td><td><span>add a repo using yum-config-manage</span></td></tr><tr><td>&nbsp;</td><td><code>--disablerepo</code></td></tr></tbody></table></figure><p><span>Add a package to local directory</span></p><ol start='' ><li><code>yum install createrepo</code></li><li><code>mkdir /root/local_repo</code></li><li><span>copy package to /root/local_repo</span></li><li><code>createrepo --database /root/local_repo</code></li><li><code>yum-config-manage --add-repo file:///root/local_repo</code></li></ol><h4 id='work-with-package-module-streams'><span>Work with package module streams</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>yum module list</code></td><td><span>list package modules</span></td></tr><tr><td><code>yum module info --profile php</code></td><td><span>get module information</span></td></tr><tr><td><code>yum module install php</code></td><td><span>install module</span></td></tr><tr><td><code>yum module remove php</code></td><td><span>remove module</span></td></tr><tr><td><code>yum module reset php</code></td><td><span>reset module</span></td></tr><tr><td><code>yum module list | grep &lt;package&gt;</code></td><td><span>Install package based on module (specific versions)</span></td></tr><tr><td>&nbsp;</td><td><code>yum module install php:7.3/minimal</code></td></tr></tbody></table></figure><h4 id='modify-the-system-bootloader'><span>Modify the system bootloader</span></h4><ol start='' ><li><code>vim /etc/default/grub</code><span>  remove rhgb and quite</span></li><li><code>grub2-mkconfig -o &lt;/boot/efi/efi/redhat/grub.cfg or boot/grub2/grub.cfg&gt;</code><span> to apply the changes</span></li><li><span>Install grub </span><code>grub2-install /dev/&lt;vda|sda&gt;</code></li></ol><h3 id='manage-basic-networking'><span>Manage basic networking</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='configure-ipv4-and-ipv6-addresses'><span>Configure IPv4 and IPv6 addresses</span></h4><p><span>open console to whatever server you are configuring the network on </span><u><span>NO SSH</span></u></p><p><code>nmcli con show</code><span>			</span><span>show connection profiles status</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># Add a connection profile with IPv4, Gateway</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">nmcli con add con-name &lt;name&gt; type ethernet ifname &lt;eth0|en3&gt; ipv4.method auto|manual(no dhcp) ip4 &lt;IP/CIDR&gt; gw4 &lt;GateIP&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><code>nmcli con up &lt;profile&gt;</code><span> </span><span>											</span><span>     bring up newly created connection</span></p><p><span>Add/modify new connection </span></p><p><span>  </span><code>nmcli con mod &lt;name&gt; +ipv4.address &lt;IP/CIDR&gt;</code><span>	</span><span>   add an ipv4 address to a profile</span>
+<span>  </span><code>nmcli con up &lt;name&gt;</code>
+<span>  </span><code>man nmcli-examples</code><span>														</span><span>      get examples for nmcli</span></p><h4 id='configure-hostname'><span>Configure hostname</span></h4><p><code>hostnamectl set-hostname &lt;server.example.com&gt;</code>
+<code>hostnamectl status</code><span>  </span><span>														</span><span>show current hostname</span></p><h4 id='configure-hostname-resolution'><span>Configure hostname resolution</span></h4><p><code>vim /etc/hosts</code>
+<code>&lt;IP&gt; &lt;hostname use FQDN&gt;</code><span> and optional alias(cname) server1</span>
+<span>Check with </span><code>getent hosts &lt;servername&gt;</code></p><h4 id='configure-network-services-to-start-automatically-at-boot'><span>Configure network services to start automatically at boot</span></h4><p><code>systemctl enable|disable &lt;service&gt;</code><span>                                        start and disable at boot</span>
+<code>nmcli con mod &lt;name&gt; connection.autoconnect yes|no</code><span>      connection starts automatically</span>
+<span>This is for any connection profiles (nmcli con show)</span></p><h4 id='restrict-network-access-using-firewall-cmdfirewall'><span>Restrict network access using firewall-cmd/firewall</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>firewall-cmd --zone &lt;zone&gt; --list-all</code></td><td><span>show zone information</span></td></tr><tr><td><code>firewall-cmd --new-zone &lt;newzonename&gt; --permanent</code></td><td><span>add a new firewall zone</span></td></tr><tr><td><code>firewall-cmd --reload</code></td><td><span>always reload firewall when adjusting firewall rules</span></td></tr><tr><td><code>firewall-cmd --zone &lt;zonename&gt; --add-service=ssh --permanent</code></td><td><span>add a service to a zone</span></td></tr><tr><td><code>firewall-cmd --change-interface=eth2 --zone=&lt;zonename&gt; --permanent</code></td><td><span>change interface for a zone</span></td></tr><tr><td><code>firewall-cmd --add-source=&lt;IP/cidr&gt; --zone=block --permanent</code></td><td><span>block an IP</span></td></tr><tr><td><code>firewall-cmd --set-default-zone=&lt;zonename&gt;</code></td><td><span>set default zone</span></td></tr><tr><td><code>firewall-cmd --add-port 8080/tcp --permanent --zone=&lt;zonename&gt;</code></td><td><span>add port to a zone</span></td></tr><tr><td><code>firewall-cmd --remove-service ssh --permanent</code></td><td><span>remove a service from a zone</span></td></tr><tr><td><code>firewall-cmd --remove-port 8080/tcp --permanent</code></td><td><span>remove a port from a zone</span></td></tr></tbody></table></figure><h3 id='manage-users-and-groups'><span>Manage users and groups</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='create-delete-and-modify-local-user-accounts'><span>Create, delete, and modify local user accounts</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>useradd -G &lt;supp group to add&gt; &lt;username&gt;</code></td><td><span>create a user adding them to a supplimentary group</span></td></tr><tr><td><code>userdel &lt;username&gt;</code></td><td><span>delete a user</span></td></tr><tr><td><code>usermod -a -G &lt;supp group&gt; &lt;username&gt;</code></td><td><span>modify a user adding them to another group</span></td></tr></tbody></table></figure><p><span>Create files in </span><code>/etc/skel</code><span> to have them show up in all newly created users home(~) accounts</span></p><h4 id='change-passwords-and-adjust-password-aging-for-local-user-accounts'><span>Change passwords and adjust password aging for local user accounts</span></h4><p><span>more on </span><a href='basic_linux.html'><span>Users</span></a></p><p><code>vim /etc/login.defs</code><span> </span><span>																</span><span>change default  UID/GID min and max, and password age</span>
+<span>chage to change user password policy</span>
+<span>					</span><code>-d</code><span>   0 (change password immediately)</span>
+<span>					</span><code>-m</code><span>   min days between password change</span>
+<span>					</span><code>-M</code><span>   max days between password change</span></p><h4 id='create-delete-and-modify-local-groups-and-group-memberships'><span>Create, delete, and modify local groups and group memberships</span></h4><figure><table><thead><tr><th><code>Command</code></th><th><code>Description</code></th></tr></thead><tbody><tr><td><code>groupadd &lt;groupname&gt;</code></td><td><code>add a group</code></td></tr><tr><td>&nbsp;</td><td><code>-g &lt;GID&gt; &lt;groupname&gt;  to specify group id</code></td></tr><tr><td><code>groupdel</code><span> </span><groupname></td><td><code>remove group</code></td></tr><tr><td><code>groupmod&lt;options&gt; &lt;groupname&gt;</code></td><td><span>modify a group  </span><code>-h</code><span> for help</span></td></tr></tbody></table></figure><h4 id='configure-superuserroot-access'><span>Configure Superuser(root) access</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">vim /etc/sudoers.d/&lt;username&gt;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>&lt;username&gt; ALL=(ALL) ALL</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#ALL=(ALL) NOPASSWD:ALL to not require a password</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 92px;"></div><div class="CodeMirror-gutters" style="display: none; height: 92px;"></div></div></div></pre><h3 id='manage-security'><span>Manage security</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='create-and-use-file-access-control-lists'><span>Create and use file access control lists</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>getfacl &lt;file/directory&gt;</code></td><td><span>check acls</span></td></tr><tr><td><code>setfacl -m u:&lt;username&gt;:rwx /directory</code></td><td><span>set/modify acl to give a user rwx perms on a directory</span></td></tr><tr><td><code>setfacl -m d:u:&lt;username&gt;:rwx /directory</code></td><td><span>set/modify acl to set default permissions for a user on a directory</span></td></tr><tr><td><code>setfacl -x &lt;file/directory&gt;</code></td><td><span>remove acls</span></td></tr><tr><td><code>-R</code></td><td><span>to set permissions for all files in a directory</span></td></tr></tbody></table></figure><h4 id='configure-key-based-authentication-for-ssh'><span>Configure key-based authentication for SSH</span></h4><ol start='' ><li><span>Login as user </span></li><li><code>ssh-keygen</code><span> (you can specific name of the key:  .ssh/</span><name><span>)</span></li><li><span>send key to remote host: </span><code>ssh-copy-id -i .ssh/&lt;key.pub&gt; remote@host</code></li><li><code>vim /etc/ssh/sshd_config</code>
+<span>    AllowRootLogin=no,  PasswordAuthenication =no</span></li><li><code>systemctl reload sshd</code></li></ol><h4 id='set-enforcing-and-permissive-modes-for-selinux'><span>Set enforcing and permissive modes for SELinux</span></h4><p><code>setenforce (1|0)</code><span>, </span><code>getenforce</code><span> to check OR vim </span><code>/etc/selinux/conf</code></p><h4 id='list-and-identify-selinux-file-and-process-context'><span>List and identify SELinux file and process context</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>ls -Z</code><span>, </span><code>ps -Z</code></td><td><span>view selinux context on files and processes</span></td></tr><tr><td><code>semanage fcontext -l | grep &lt;context&gt;</code></td><td><span>list file contexts and grep for a pattern</span></td></tr><tr><td><code>semanage port -l | grep &lt;port service| http&gt;</code></td><td><span>list ports for a specific service</span></td></tr><tr><td><code>semanage port -a -t http_port_t -p tcp &lt;port&gt;</code></td><td><span>add a port to the http service</span></td></tr><tr><td><code>chcon unconfirmed-u:object-r:tmp_t:s0 &lt;file&gt;</code></td><td><span>change context on a file</span></td></tr></tbody></table></figure><h4 id='restore-default-file-contexts'><span>Restore default file contexts</span></h4><p><code>restorecon /directory</code><span> (-R for recursive)</span></p><h4 id='use-boolean-settings-to-modify-system-selinux-settings'><span>Use boolean settings to modify system SELinux settings</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>ls /sys/fs/selinux/booleans</code></td><td><span>boolean location</span></td></tr><tr><td><code>getsebool -a | grep &lt;bool&gt;</code></td><td><span>show all booleans and grep for pattern</span></td></tr><tr><td><code>getsebool -L</code></td><td><span>more info on booleans</span></td></tr><tr><td><code>setsebool -P use_virtualbox on</code></td><td><span>sets the current state of a particular boolean, -P make it perminent</span></td></tr></tbody></table></figure><h4 id='diagnose-and-address-routine-selinux-policy-violations'><span>Diagnose and address routine SELinux policy violations</span></h4><ol start='' ><li><span>Try to get status or restart service </span><code>systemctl restart/status service</code></li><li><span>“Could not bind” check: </span><code>sealert -a /var/log/audit/audit.log</code></li><li><span>Add port with semanage: </span><code>semanage port -a -t &lt;http_port_t&gt; -p tcp &lt;port&gt;</code></li><li><span>Restart service and check again for erros</span></li><li><span>Add to firewall: </span><code>firewall-cmd --add-port=&lt;port&gt;/tcp --permanent</code></li><li><code>firewall-cmd --reload</code></li></ol><h3 id='manage-containers'><span>Manage containers</span></h3><p><a href="ex200.html"><span>Top</span></a></p><h4 id='create-rootless-container'><span>Create rootless container </span></h4><p><span>a rootless container is a user that can run sudo container commands</span></p><p><span>	</span><span>create and login as a user you want to use to manage containers on your system</span></p><p><span>	</span><code>useradd containerManager</code></p><p><span>	</span><span>create a directory to store and manage containers</span></p><p><span>	</span><code>mkdir /containers</code></p><p><span>	</span><code>chown -R containerManager: /containers</code></p><h4 id='find-and-retrieve-container-images-from-a-remote-registry'><span>Find and retrieve container images from a remote registry</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>yum module install container-tools</code></td><td><span>install container tools</span></td></tr><tr><td><code>podman login &lt;repository.redhat.com&gt;</code></td><td><span>login to repository, need to enter username and password</span></td></tr><tr><td><code>podman info</code></td><td><span>get info on a container</span></td></tr><tr><td><code>podman search &lt;http/mariadb&gt;</code></td><td><span>search for a podman container</span></td></tr><tr><td>&nbsp;</td><td><span>You can also search by repository</span></td></tr></tbody></table></figure><h4 id='inspect-container-images'><span>Inspect container images</span></h4><p><code>skopeo inspect</code><span>														</span><span>   inspect information about and image withing a registry</span><span>													</span></p><p><code>podman inspect</code><span> after a </span><code>podman pull</code><span>					</span><span>inspect a container after you pull it from a registry</span>
+<code>podman images</code><span> </span><span>															</span><span>list images in local storage</span></p><h4 id='perform-container-management-using-commands-such-as-podman-and-skopeoattach-persistent-storageport-forwardingrun-service-inside-container'><span>Perform container management using commands such as podman and skopeo/attach persistent storage/port forwarding/run service inside container</span></h4><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">podman run -d --name &lt;name&gt; -p HostPort:serviceport -v /new/mount:/servicemount:Z -e environment=event &lt;registry&gt;</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><figure><table><thead><tr><th><span>Option</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>-d</code></td><td><span>run the container in the background</span></td></tr><tr><td><code>--name</code></td><td><span>specify name for your cont</span></td></tr><tr><td><code>-p</code></td><td><span>port redirection  (ContainerPort:HostPort)</span></td></tr><tr><td><code>-v</code></td><td><span>directory pointers  src volume to host volume     </span><code>/src/web:/var/www</code></td></tr><tr><td><code>-Z</code></td><td><span>maintains selinux labels</span></td></tr><tr><td><code>-e</code></td><td><span>set environment variable</span></td></tr><tr><td><span>End registry/service/version</span></td><td><span>this will be the podman image registry you logged into followed by the service and version</span></td></tr></tbody></table></figure><p><code>podman logs &lt;container name&gt;</code><span> </span><span>														</span><span>check logs (check for any errors with -e)</span></p><p><span>Don&#39;t forget to add port to firewall and reload:</span></p><p><span>		</span><span> </span><code>firewall-cmd --add-port hostport/tcp --permanent</code>
+<span>​</span><span>		</span><span> </span><code>firewall-cmd --reload</code></p><h4 id='perform-basic-container-management-such-as-running-starting-stopping-and-listing-running-containers'><span>Perform basic container management such as running, starting, stopping, and listing running containers</span></h4><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>podman stop</code></td><td><span>send sigterm, stop the container</span></td></tr><tr><td><code>podman restart, start</code></td><td><span>restart or start podman container</span></td></tr><tr><td><code>podman rm</code></td><td><span>remove a container</span></td></tr><tr><td><code>podman ps</code></td><td><span>show containers,  use ps -all to show all containers even stopped ones</span></td></tr><tr><td><code>podman exec</code></td><td><span>run commands inside a container</span></td></tr><tr><td>&nbsp;</td><td><span>podman exec </span><containername><span> uname -a</span></td></tr><tr><td><code>podman exec -it &lt;cont name&gt; /bin/bash</code></td><td><span>get shell , </span><code>exit</code><span> to exit</span></td></tr></tbody></table></figure><h4 id='configure-a-container-to-start-automatically-as-a-systemd-service'><span>Configure a container to start automatically as a systemd service</span></h4><ol start='' ><li><span>login directly with ssh instead of su </span></li></ol><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">`ssh  containerManager@&lt;remote location&gt;`</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><ol start='2' ><li><span>create systemd directory for the user (notice the name is actually user not the username name)</span></li></ol><p><span>	</span><code>mkdir -p ~/.config/systemd/user</code></p><ol start='3' ><li><span>run podman generate systemd to create systemd unit file from running container</span></li></ol><p><span>	</span><code>cd ~/.config/systemd/user</code></p><p><span>	</span><code>podman generate systemd --name &lt;name&gt; --files --new</code></p><ol start='4' ><li><span>test by stoping and deleting the container.</span></li></ol><p><span>	</span><code>podman stop &lt;name&gt;</code>
+<span>​</span><span>	</span><code>podmane rm &lt;name&gt;</code></p><ol start='5' ><li><span>use systemctl to reload config and enable/start the container</span></li></ol><p><span>	</span><code>`systemctl --user daemon-reload</code>
+<span>​</span><span>	</span><code>systemctl --user enable --now container-&lt;name&gt;.service</code></p><ol start='6' ><li><p><span>confirm the container is running </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">`curl http://localhost:&lt;container port&gt;`</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></li><li><p><span>run the </span><code>loginctl</code><span> command for the services to start automatically</span></p></li></ol><p><span>		</span><code>loginctl enable-linger</code></p><h3 id='configure-rsyslog-to-log-all-messages-to-specific-priority'><span>Configure Rsyslog to log all messages to specific priority</span></h3><p><a href="ex200.html"><span>Top</span></a></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sudo vim /etc/rsyslog.d/&lt;name&gt;.conf</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>*.debug &lt;log location&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#Restart Rsyslog</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sudo systemctl restart rsyslog</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#Test</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">logger -p debug "Debug Test"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sudo tail &lt;log location&gt;</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><h3 id='use-a-directory-to-store-tmp-files-delete-after-a-specific-time'><span>Use a directory to store tmp files (delete after a specific time)</span></h3><p><span>Files are subject to cleanup if not accessed in a specific time</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># Create tmp volatile file with the following</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># tmp files stored here will delete after 30s if not accessed</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">vim /etc/tmpfiles.d/volatile.conf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>d<span class="cm-tab" role="presentation" cm-text="	">   </span>&lt;directory&gt;<span class="cm-tab" role="presentation" cm-text="	"> </span>  &lt;octal perms/0700&gt; <span class="cm-tab" role="presentation" cm-text="	">   </span>root<span class="cm-tab" role="presentation" cm-text="	">    </span>root <span class="cm-tab" role="presentation" cm-text="	">   </span>&lt;time|30s&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># cd into &lt;directory&gt; and run</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemd-tmpfiles --create /etc/tmpfiles.d/volatile.conf</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><h3 id='autofs-to-automate-directories'><span>Autofs to automate directories</span></h3><p><span>automatically mount the home directory when a user logs in.</span></p><p><span>adjust selinux to allow user access to the NFS-mounted directory using SSH key authentication.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1.  systemctl status nfs-server</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2.  yum install autofs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">3.  create master autofs map file</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span>`vim /etc/auto.master.d/&lt;name&gt;.autofs`</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>`/- /etc/auto.&lt;name&gt;`</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4.  get the details of a user's home directory path</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>`getent passwd &lt;username&gt;`</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">5.  create the auto.&lt;name&gt; file </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>`vim /etc/auto.&lt;name&gt;`</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>`&lt;home directory found with getent&gt;  -rw  &lt;remote domain&gt;:&lt;network file location&gt;`</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">6.  restart the autofs service</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>`systemctl restart autofs`</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">7.  set appropriate SELinux Boolean so that &lt;name&gt; can login to remote location using ssh public keys </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span>`sudo setsebool -P use_nfs_home_dirs true`</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 322px;"></div><div class="CodeMirror-gutters" style="display: none; height: 322px;"></div></div></div></pre><p>&nbsp;</p></div></div>
+</body>
+</html>

@@ -1,0 +1,701 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>rh134</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1>RH124 - Red Hat System Adminitration II</h1><p><a href='index.html'><span>Home</span></a></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n4"><a class="md-toc-inner" href="#various-commands-covered">Various Commands Covered</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n23"><a class="md-toc-inner" href="#troubleshooting">Troubleshooting</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n25"><a class="md-toc-inner" href="#boot-issues">Boot Issues</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n54"><a class="md-toc-inner" href="#reset-root-password">Reset Root Password</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n79"><a class="md-toc-inner" href="#investigate-and-fix-service-issues-on-a-specific-port">Investigate and Fix Service issues on a specific port </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n96"><a class="md-toc-inner" href="#configurations">Configurations</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n98"><a class="md-toc-inner" href="#switch-default-targets-run-levelsinit-levels">Switch default targets (run levels/init levels)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n115"><a class="md-toc-inner" href="#edit-crontab-schedule-jobs">Edit Crontab (schedule jobs)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n121"><a class="md-toc-inner" href="#configure-system-to-use-a-directory-to-store-tmp-files">Configure system to use a directory to store tmp files</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n125"><a class="md-toc-inner" href="#change-default-selinux-mode">Change default SElinux mode </a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n128"><a class="md-toc-inner" href="#configure-autofs-automate-file-system">Configure autofs (automate file system)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n133"><a class="md-toc-inner" href="#partitions-and-logical-volume-manager-lvm">Partitions and Logical Volume Manager (LVM)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n135"><a class="md-toc-inner" href="#list-create-delete-partitions-on-mbr-and-gpt-disks">List, create, delete partitions on MBR and GPT disks</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n183"><a class="md-toc-inner" href="#lvm">LVM</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n197"><a class="md-toc-inner" href="#create-and-remove-physical-volumes-pv">Create and remove physical volumes (PV)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n211"><a class="md-toc-inner" href="#assign-volume-groups-vg-to-physical-volumes-pv">Assign Volume Groups (VG) to Physical Volumes (PV)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n234"><a class="md-toc-inner" href="#create-and-delete-logical-volumes-lv">Create and delete logical volumes (LV)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n248"><a class="md-toc-inner" href="#format-newly-created-partionslvs-with-filesystems">Format newly created partions/LV's with filesystems</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n262"><a class="md-toc-inner" href="#configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label">Configure systems to mount file systems at boot by universally unique ID (UUID) or label</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n273"><a class="md-toc-inner" href="#add-swap-to-lv-adding-to-etcfstab-non-destructively">Add swap to LV adding to /etc/fstab (non-destructively)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n289"><a class="md-toc-inner" href="#setting-permissions-setfacl">Setting Permissions (Setfacl) </a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n300"><a class="md-toc-inner" href="#firewall-settings-firewalld">Firewall settings (firewalld)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n307"><a class="md-toc-inner" href="#container-management">Container Management</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n309"><a class="md-toc-inner" href="#install-container-tools">Install Container tools</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n312"><a class="md-toc-inner" href="#creating-and-configuring-a-rootless-container">Creating and configuring a rootless container </a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n320"><a class="md-toc-inner" href="#login-to-container-image-repository">Login to Container image repository</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n323"><a class="md-toc-inner" href="#create-a-container">Create a Container</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n357"><a class="md-toc-inner" href="#configure-container-to-start-automatically-as-a-systemd-service">Configure container to start automatically as a systemd service</a></span></p></div><h3 id='various-commands-covered'><span>Various Commands Covered</span></h3><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>wget &lt;URL&gt;</code></td><td><span>download from website</span></td></tr><tr><td><code>chmod +x &lt;file/direcotry&gt;</code></td><td><span>set execute permissions. more on </span><a href='basic_linux.html'><span>Permissions</span></a></td></tr><tr><td><code>groupadd &lt;groupname&gt;</code></td><td><span>add group for users</span></td></tr><tr><td><code>for i in 1 2 3 4; do useradd -G &lt;groupname&gt; &lt;username&gt;$i; done</code></td><td><span>add several users using a for loop</span></td></tr></tbody></table></figure><hr /><p>&nbsp;</p><h3 id='troubleshooting'><span>Troubleshooting</span></h3><p><a href="rh134.html"><span>Top</span></a></p><h4 id='boot-issues'><span>Boot Issues</span></h4><p><strong><span>open console</span></strong><span> to remote system. Enter emergency mode to fix boot issues</span></p><p><span>You must know machines root password to enter this mode</span></p><ol start='' ><li><p><span>CRTL + ALT + DELETE to restart machine</span></p></li><li><p><span>Press &#39;</span><code>e</code><span>&#39; to enter edit mode</span></p></li><li><p><span>Add  </span><code>systemd.unit=emergency.target</code><span> to the line that starts with linux</span></p></li><li><p><span>CTRL + x to continue/reboot into emergency target mode </span></p></li><li><p><span>Enter Root Password</span></p></li><li><p><span>Remount the file system (/) to rw instead of ro</span></p><p><span>	</span><code>mount -o remount,rw /</code></p></li><li><p><span>Check for bad mounts</span></p><p><span>    </span><code>mount -a</code></p><p><span>	</span><span>if you get an error you need to edit /etc/fstab (either comment out or remove/fix bad entry)</span></p></li><li><p><span>Reload fstab</span></p><p><span>     </span><code>systemctl daemon-reload</code></p></li><li><p><span>Check mounts again </span><code>mount -a</code></p></li><li><p><span>Reboot  </span><code>systemctl reboot</code></p><p><span>  </span></p></li></ol><h4 id='reset-root-password'><span>Reset Root Password</span></h4><p><strong><span>open console</span></strong><span> to remote system to change root password</span></p><ol start='' ><li><p><span>CRTL + ALT + DELETE to restart machine</span></p></li><li><p><span>Press &#39;</span><code>e</code><span>&#39; to enter edit mode</span></p></li><li><p><span>Add  </span><code>rd.break</code><span> to the line that starts with linux</span></p></li><li><p><span>CTRL + x to continue/reboot</span></p></li><li><p><span>Remount the file system (/sysroot) to rw instead of ro</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">`mount -o remount,rw /sysroot`</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></li><li><p><span>Change to /sysroot </span><code>chroot /sysroot</code></p></li><li><p><span>Change root password </span><code>passwd root</code></p><p><span>    Enter new password</span></p></li><li><p><span>Have system automatically perform full SELinux relabel</span></p><p><span>    </span><code>touch ./autorelabel</code><span> </span></p></li><li><p><span>Reboot  </span><code>systemctl reboot</code></p></li></ol><p>&nbsp;</p><h4 id='investigate-and-fix-service-issues-on-a-specific-port'><span>Investigate and Fix Service issues on a specific port </span></h4><ol start='' ><li><p><span>restart service</span>
+<span>	</span><code>systemctl restart &lt;service&gt;</code></p></li><li><p><span>get status of service</span>
+<span>	</span><code>systemctl status &lt;service&gt;</code><span>	</span>
+<span>       If you see a message &quot;could not bind (port issue)&quot; then check selinux</span></p></li><li><p><span>Use sealert to check selinux policy</span>
+<span> </span><code>sealert -a /var/log/audit.log</code>
+<span>      </span><span>	</span><span>   this will will show that selinux is preventing bind access on port</span></p></li><li><p><span>use the </span><code>semanage port</code><span> command to set appropriate selinux context</span>
+<span> </span><code>semanage port -a -t &lt;service_t&gt; -p &lt;protocol/TCP/UDP&gt; &lt;port&gt;</code></p><p><span>	</span><span>  </span><code>semanage port -l</code><span> to get a list of service_t with ports. Use grep to find specific services</span></p></li><li><p><span>Restart  the service</span>
+<span> </span><code>systemctl restart &lt;service&gt;</code></p></li><li><p><span>Add  the port to firewalld zone </span>
+<span>	</span><code>firewall-cmd --add-port=&lt;port&gt;/&lt;protocol&gt; --permanent</code>
+<span>	</span><code>firewall-cmd --reload</code></p></li></ol><hr /><p>&nbsp;</p><h3 id='configurations'><span>Configurations</span></h3><p><a href="rh134.html"><span>Top</span></a></p><h4 id='switch-default-targets-run-levelsinit-levels'><span>Switch default targets (run levels/init levels)</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>determine default/current target</span></td><td><code>systemctl get-default</code></td></tr><tr><td><span>change target (interactively)</span></td><td><code>sudo systemctl isolate multi-user.target</code></td></tr><tr><td><span>change target (after reboot)</span></td><td><code>sudo systemctl set-default mulit-user.target</code></td></tr><tr><td><span>reboot/test after change</span></td><td><code>systemctl reboot</code><span> then </span><code>systemctl get-default</code></td></tr></tbody></table></figure><h4 id='edit-crontab-schedule-jobs'><span>Edit Crontab (schedule jobs)</span></h4><p><code>crontab -e</code></p><p><span>Reference: </span><code>cat /etc/crontab</code></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">*<span class="cm-tab" role="presentation" cm-text="	">   </span>*<span class="cm-tab" role="presentation" cm-text="	">   </span>*<span class="cm-tab" role="presentation" cm-text="	">   </span>*<span class="cm-tab" role="presentation" cm-text="	">   </span>*  &lt;message/command to execute&gt;</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; |<span class="cm-tab" role="presentation" cm-text="	">   </span>|<span class="cm-tab" role="presentation" cm-text="	">   </span>|<span class="cm-tab" role="presentation" cm-text="	">   </span>|____Day of the Week (0-6 (0 is sunday))</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">| &nbsp; |<span class="cm-tab" role="presentation" cm-text="	">   </span>|<span class="cm-tab" role="presentation" cm-text="	">   </span>|____Month (Jan-Dec)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|<span class="cm-tab" role="presentation" cm-text="	">   </span>|<span class="cm-tab" role="presentation" cm-text="	">   </span>|___Day of the Month (1-31)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|<span class="cm-tab" role="presentation" cm-text="	">   </span>|__Hour (0-23)(*2 would be every 2 hours)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">|__Min (0-59)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#Example</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">* * 25 Dec * echo "Merry Christmas"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">On December 25th echo the message Merry Christmas</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><p><span>reboot: </span><code>systemctl reboot</code></p><p>&nbsp;</p><h4 id='configure-system-to-use-a-directory-to-store-tmp-files'><span>Configure system to use a directory to store tmp files</span></h4><p><span>Files are subject to cleanup if not accessed in a specific time</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># Create tmp volatile file with the following</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># tmp files stored here will delete after 30s if not accessed</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">vim /etc/tmpfiles.d/volatile.conf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>d<span class="cm-tab" role="presentation" cm-text="	">   </span>&lt;directory&gt;<span class="cm-tab" role="presentation" cm-text="	"> </span>  &lt;octal perms/0700&gt; <span class="cm-tab" role="presentation" cm-text="	">   </span>root<span class="cm-tab" role="presentation" cm-text="	">    </span>root <span class="cm-tab" role="presentation" cm-text="	">   </span>&lt;time|30s&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># cd into &lt;directory&gt; and run</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">systemd-tmpfiles --create /etc/tmpfiles.d/volatile.conf</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 230px;"></div><div class="CodeMirror-gutters" style="display: none; height: 230px;"></div></div></div></pre><p>&nbsp;</p><h4 id='change-default-selinux-mode'><span>Change default SElinux mode </span></h4><p><a href="rh134.html"><span>Top</span></a></p><p><span>	</span><code>vim /etc/sysconfig/selinux</code><span> </span>
+<span>​</span><span>		</span><span>SELINUX = </span><MODE><span>  (enforcing or permissive)</span>
+<span>​</span><span>	</span><span>reboot system: </span><code>sudo systemctl reboot)</code></p><h4 id='configure-autofs-automate-file-system'><span>Configure autofs (automate file system)</span></h4><p><span>automatically mount the home directory when a user logs in.</span></p><p><span>adjust selinux to allow user access to the NFS-mounted directory using SSH key authentication.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">1.  yum install autofs</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">2.  create master autofs map file</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>  vim /etc/auto.master.d/&lt;name&gt;.autofs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span>/- /etc/auto.&lt;name&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">3.  get the details of a user's home directory path</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>getent passwd &lt;username&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">4.  create the auto.&lt;name&gt; file </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>vim /etc/auto.&lt;name&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>  &lt;home directory found with getent&gt;  -rw  &lt;remote domain&gt;:&lt;network file location&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span> &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">5.  restart the autofs service</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span>systemctl restart autofs</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">6.  set SELinux Boolean allowing users to login to remote location using ssh keys </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-tab" role="presentation" cm-text="	"> </span>sudo setsebool -P use_nfs_home_dirs true</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 414px;"></div><div class="CodeMirror-gutters" style="display: none; height: 414px;"></div></div></div></pre><p>&nbsp;</p><h3 id='partitions-and-logical-volume-manager-lvm'><span>Partitions and Logical Volume Manager (LVM)</span></h3><p><a href="rh134.html"><span>Top</span></a></p><h4 id='list-create-delete-partitions-on-mbr-and-gpt-disks'><span>List, create, delete partitions on MBR and GPT disks</span></h4><p><strong><code>fidsk /dev/device</code><span> (MBR)</span></strong></p><figure><table><thead><tr><th><span>Option</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>h</code></td><td><span>help</span></td></tr><tr><td><code>n</code></td><td><span>New partition</span></td></tr><tr><td><code>p</code></td><td><span>list/display or </span><code>fidsk -l /dev/device</code></td></tr><tr><td><code>t</code></td><td><span>for type, then L to list all available types 83 (linux), 82 (swap), 8e(lvm)</span></td></tr><tr><td><code>d</code></td><td><span>delete a partition</span></td></tr><tr><td><code>w</code></td><td><span>write changes to partition/disk</span></td></tr></tbody></table></figure><p><strong><code>gdisk /dev/device</code><span> (GPT)</span></strong></p><figure><table><thead><tr><th><span>Option</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>?</code></td><td><span>help</span></td></tr><tr><td><code>n</code></td><td><span>new partition</span></td></tr><tr><td><code>w</code></td><td><span>write changes to partition/disk</span></td></tr><tr><td><code>p</code></td><td><span>list/display disk information</span></td></tr><tr><td><code>d</code></td><td><span>delete a partition</span></td></tr><tr><td><code>L</code></td><td><span>list all available types 8300 (linux), 8200 (swap), 8e00 (lvm)</span></td></tr></tbody></table></figure><p>&nbsp;</p><h4 id='lvm'><span>LVM</span></h4><p><a href="rh134.html"><span>Top</span></a></p><p><span>Logical Volume Management, a way to manage storage systems. Instead of creating partions you create logical volumes.</span></p><p>&nbsp;</p><p><strong><u><span>Filesystem</span></u></strong><span>   </span><span>						</span><span>  </span><span>	</span><font color=orange><strong><span>/</span><span>			</span><span> </span><span>	</span><span> /var</span><span>		</span><span>      /etc</span><span>		</span><span>  /bin</span></strong></font><span>  </span><span>	</span><span>     </span><u><span>LVs point to filesystem locations</span></u></p><p><span>                                                  |</span><span>				</span><span>       | </span><span>			</span><span>    |</span><span>			</span><span>  |</span></p><p><u><strong><span>Logical Volumes (LV)</span></strong></u><span>		</span><span>   </span><font color=purple><span> </span><strong><span>lv_root</span><span>		</span><span>lv_var</span><span>		</span><span>lv_etc</span><span>		</span><span>lv_bin</span></strong><span> </span></font><span>       </span><u><span>created on top of VGs</span></u></p><p><span>												</span><span>   |</span><span>			</span><span>    </span><span>	</span><span>  |</span><span>				</span><span> |</span><span>			</span><span>   |</span></p><p><span>												</span><span> </span><span>	</span><span>\                     |                 |            /</span></p><p><strong><u><span>Volume Group (VG)</span></u></strong><span>										</span><font color=green><strong><span>vg_base</span></strong></font><span>  </span><span>						</span><span> </span><span>	</span><span>      </span><u><span>consists of multiple PVs</span></u></p><p><span>													</span><span>     </span><span>	</span><span>/                      |                  \</span></p><p><strong><u><span>Physical Volumes (PV)</span></u></strong><span>			</span><font color=blue><strong><span>/dev/sda1</span><span>		</span><span>/dev/sdb1</span><span>		</span><span>/dev/sdc1</span></strong></font><span>	</span><span>    </span><u><span>Needs to be initialized for use by LVM using pvcreate</span></u></p><p>&nbsp;</p><p>&nbsp;</p><h4 id='create-and-remove-physical-volumes-pv'><span>Create and remove physical volumes (PV)</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a Physical Volume. Initialize disk for use by LVM</span></td><td><code>pvcreate /dev/&lt;device&gt;</code></td></tr><tr><td><span>show physical volumes</span></td><td><code>pvs</code></td></tr><tr><td><span>remove physical volumes</span></td><td><code>pvremove /dev/&lt;device&gt;</code></td></tr></tbody></table></figure><h4 id='assign-volume-groups-vg-to-physical-volumes-pv'><span>Assign Volume Groups (VG) to Physical Volumes (PV)</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a volume group on a physical volume</span></td><td><code>vgcreate &lt;vgname&gt; /dev/sdb1</code></td></tr><tr><td>&nbsp;</td><td><code>-s</code><span> to specify physical extends</span></td></tr><tr><td><span>remove volume group</span></td><td><code>vgremove &lt;vgname&gt;</code></td></tr><tr><td><span>display volume groups</span></td><td><code>vgs</code></td></tr><tr><td><span>extend a volume group</span></td><td><code>vgextend &lt;vgname&gt; /dev/sdb21</code></td></tr><tr><td><span>reduce the size of a volume group</span></td><td><code>vgreduce &lt;vgname&gt; /dev/sdb1  (only works on GPT)</code></td></tr></tbody></table></figure><h4 id='create-and-delete-logical-volumes-lv'><span>Create and delete logical volumes (LV)</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a logical volume</span></td><td><code>lvcreate -L +#GB -n &lt;lvname&gt; &lt;vgname&gt; /dev/sdb1</code></td></tr><tr><td>&nbsp;</td><td><span>make sure to you the + to specify size of the LV. +1MB, +2GB ... etc</span></td></tr><tr><td><span>remove Logical Volume</span></td><td><code>lvremove /dev/sdb1/&lt;lvname&gt;</code></td></tr></tbody></table></figure><h4 id='format-newly-created-partionslvs-with-filesystems'><span>Format newly created partions/LV&#39;s with filesystems</span></h4><figure><table><thead><tr><th><span>Description</span></th><th><span>Command</span></th></tr></thead><tbody><tr><td><span>create a xfs filesystem on newly created Logical Volume</span></td><td><code>mkfs -t xfs /dev/mapper/&lt;vgname&gt;/&lt;lvname&gt;</code></td></tr><tr><td>&nbsp;</td><td><code>lsblk</code><span> to verify</span></td></tr><tr><td>&nbsp;</td><td><code>-L &lt;label&gt;</code><span> add a label, instead of using UUID</span></td></tr></tbody></table></figure><h4 id='configure-systems-to-mount-file-systems-at-boot-by-universally-unique-id-uuid-or-label'><span>Configure systems to mount file systems at boot by universally unique ID (UUID) or label</span></h4><ol start='' ><li><p><span>Get the uuid of the device to add to fstab</span></p><p><span>		</span><code>lsblk -o UUID /dev/&lt;device&gt;</code><span>  </span><span>	</span></p></li><li><p><span>Create mount point</span></p><p><span>		</span><code>mkdir /mountpoint</code></p></li><li><p><code>vim /etc/fstab</code><span> at the bottom add:</span></p><p><code>UUID= &lt;uuid found above&gt;    /mountpoint   &lt;filesystem|xfs|ext4&gt;   defaults    0   0</code><span> </span></p></li></ol><h4 id='add-swap-to-lv-adding-to-etcfstab-non-destructively'><span>Add swap to LV adding to /etc/fstab (non-destructively)</span></h4><ol start='' ><li><p><code>lvcreate -n &lt;name|swap1&gt; -L +2G &lt;vgname&gt;</code></p></li><li><p><code>mkswap /dev/&lt;vgname&gt;/swap1</code></p><p><span>	</span><code>-L &lt;label&gt;</code><span> to add a label to your swap </span></p></li><li><p><code>swapon /dev/&lt;vgname&gt;/swap1</code>
+<span>    </span><code>swapon -s</code><span> to verify</span></p><p><span>          </span><code>swapon -a</code><span>  turn on all swaps</span>
+<span>​          </span><code>swapoff /dev/&lt;vgname&gt;/swap1</code><span>  to remove</span></p></li><li><p><span>Add to /etc/fstab</span></p><p><span>     </span><code>vim /etc/fstab</code><span> at the end add:</span></p><p><span>	</span><span> </span><code>UUID=&lt;uuid found with lsblk -o UUID&gt;      swap       swap        defaults        0     0</code></p></li></ol><hr /><p>&nbsp;</p><h3 id='setting-permissions-setfacl'><span>Setting Permissions (Setfacl) </span></h3><p><a href="rh134.html"><span>Top</span></a></p><p><span>Setting file access control lists</span></p><p><span>		</span><span>set user and group permissions on directory (m modify, d default) (rwx format for perms)</span></p><p><span>			</span><code>setfacl -m u:&lt;username&gt;:&lt;perms&gt; &lt;directory&gt;</code></p><p><span>			</span><code>setfacl -m g:&lt;groupname&gt;:&lt;perms&gt; &lt;directory&gt;</code></p><p><span>		</span><span>set default permissions so all new content under directory are applied</span></p><p><span>			</span><code>setfacl -m d:u:&lt;username&gt;:&lt;perms&gt; &lt;directory&gt;</code></p><p><span>			</span><code>setfacl -m d:g:&lt;grouname&gt;:&lt;perms&gt; &lt;directory&gt;</code></p><hr /><p>&nbsp;</p><h3 id='firewall-settings-firewalld'><span>Firewall settings (firewalld)</span></h3><p><a href="rh134.html"><span>Top</span></a></p><p><span>SSH connections originating from a remote location is rejected</span></p><p><span>	</span><code>sudo firewall-cmd --add-source=&lt;IP/CIDR to block&gt; --zone=block --permanent</code>
+<span>​</span><span>	</span><code>firewall-cmd --reload</code><span>	</span></p><p><span>    use tab for help with </span><code>firewall-cmd &lt;tab&gt; &lt;tab&gt;</code><span>  and always use </span><code>firewall-cmd --reload</code><span> after every firewall change</span></p><hr /><p>&nbsp;</p><h3 id='container-management'><span>Container Management</span></h3><p><a href="rh134.html"><span>Top</span></a></p><h4 id='install-container-tools'><span>Install Container tools</span></h4><p><span>	</span><code>sudo yum module install container-tools</code></p><p>&nbsp;</p><h4 id='creating-and-configuring-a-rootless-container'><span>Creating and configuring a rootless container </span></h4><p><span>	</span><span>a rootless container is a user that can run sudo container commands</span></p><p><span>	</span><span>create and login as a user you want to use to manage containers on your system</span></p><p><span>	</span><code>useradd containerManager</code></p><p><span>	</span><span>create a directory to store and manage containers</span></p><p><span>	</span><code>mkdir /containers</code></p><p><span>	</span><code>chown -R containerManager: /containers</code></p><p>&nbsp;</p><h4 id='login-to-container-image-repository'><span>Login to Container image repository</span></h4><p><span>	</span><code>podman login &lt;registry domain&gt;</code><span> </span>
+<span>​</span><span>			</span><span>enter username and password</span></p><p>&nbsp;</p><h4 id='create-a-container'><span>Create a Container</span></h4><ol start='' ><li><span>make sure you are logged in as container user and elevate to root  </span><code>sudo -i</code></li><li><span>use the  </span><code>podman run</code><span> command to create the container.</span></li></ol><p><span> </span><code>podman run -d --name &lt;name&gt; -p &lt;port&gt;:&lt;port&gt; -v &lt;yourmount&gt;:&lt;dstmount&gt;:Z -e &lt;service=event&gt; &lt;registry domain/&lt;service&gt;/&lt;version&gt;</code></p><figure><table><thead><tr><th><span>Option</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>-d</span></td><td><span>run the container in the background</span></td></tr><tr><td><span>--name</span></td><td><span>specify name for your container</span></td></tr><tr><td><span>-p</span></td><td><span>port redirection  (ContainerPort:HostPort)</span></td></tr><tr><td><span>-v</span></td><td><span>directory pointers  src volume to host volume (/src/web:/var/www)</span></td></tr><tr><td><span>-Z</span></td><td><span>maintains selinux labels</span></td></tr><tr><td><span>-e</span></td><td><span>set environment variable</span></td></tr><tr><td><span>End registry/service/version</span></td><td><span>this will be the podman image registry you logged into followed by the service and version</span></td></tr></tbody></table></figure><p><span>Test web container :   </span><code>curl http://localhost:&lt;containerport&gt;</code><span>		</span></p><p>&nbsp;</p><h4 id='configure-container-to-start-automatically-as-a-systemd-service'><span>Configure container to start automatically as a systemd service</span></h4><ol start='' ><li><span>login directly with ssh instead of su </span></li></ol><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">`ssh  containerManager@&lt;remote location&gt;`</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><ol start='2' ><li><span>create systemd directory for the user (notice the name is actually user not the username name)</span></li></ol><p><span>	</span><code>mkdir -p ~/.config/systemd/user</code></p><ol start='3' ><li><span>run podman generate systemd to create systemd unit file from running container</span></li></ol><p><span>	</span><code>cd ~/.config/systemd/user</code></p><p><span>	</span><code>podman generate systemd --name &lt;name&gt; --files --new</code></p><ol start='4' ><li><span>test by stoping and deleting the container.</span></li></ol><p><span>	</span><code>podman stop &lt;name&gt;</code>
+<span>​</span><span>	</span><code>podmane rm &lt;name&gt;</code></p><ol start='5' ><li><span>use systemctl to reload config and enable/start the container</span></li></ol><p><span>	</span><code>`systemctl --user daemon-reload</code>
+<span>​</span><span>	</span><code>systemctl --user enable --now container-&lt;name&gt;.service</code></p><ol start='6' ><li><p><span>confirm the container is running </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">`curl http://localhost:&lt;container port&gt;`</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre></li><li><p><span>run the </span><code>loginctl</code><span> command for the services to start automatically</span></p></li></ol><p><span>		</span><code>loginctl enable-linger</code></p><hr /><p><a href="rh134.html"><span>Top</span></a></p><p>&nbsp;</p></div></div>
+</body>
+</html>
