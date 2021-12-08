@@ -14,13 +14,13 @@
 
 ## :books: Courses
 
-| :computer: Basic Cyber Course                    | :key: Virtual Hacking Labs (VHL) | :keyboard: **TryHackMe** |
-| ------------------------------------------------ | -------------------------------- | ------------------------ |
-| [Tunneling](tunneling.html)                      |                                  |                          |
-| [Survey](survey.html)                            |                                  |                          |
-| [Reports](basic_reports.html)                    |                                  |                          |
-| [Helpful Windows Commands](helpful_windows.html) |                                  |                          |
-| [Helpful Unix* Commands](helpful_linux.html)     |                                  |                          |
+| :computer: Basic Cyber Course                    | :key: Virtual Hacking Labs (VHL) | :keyboard: **TryHackMe**                         |
+| ------------------------------------------------ | -------------------------------- | ------------------------------------------------ |
+| [Tunneling](tunneling.html)                      |                                  | [25 Days of Christmas](tryhackme_christmas.html) |
+| [Survey](survey.html)                            |                                  |                                                  |
+| [Reports](basic_reports.html)                    |                                  |                                                  |
+| [Helpful Windows Commands](helpful_windows.html) |                                  |                                                  |
+| [Helpful Unix* Commands](helpful_linux.html)     |                                  |                                                  |
 
 ## :medal_military: Army
 

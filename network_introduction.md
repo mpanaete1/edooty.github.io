@@ -185,11 +185,13 @@ Example:
 
 <font color=green>Octet</font> : **4th**  
 
-Bit Value: **32**  									128	 	192 	   224		240	   248        248
+Bit Value: **32**  (take barrowed bits, 24 to 27 = 3)						                     
 
-![bit](bit.png)
-
-​															/25		  /26	     /27        /28         /29        /30
+| Subnet Mask:          | 128  | 192  | 224     | 240  | 248  | 252  | 254  | 255  |
+| --------------------- | ---- | ---- | ------- | ---- | ---- | ---- | ---- | ---- |
+| Network Increments:   | 128  | 64   | **32**  | 16   | 8    | 4    | 2    | 1    |
+| Barrowed Bits/Binary: | 1    | 1    | **1**   | 0    | 0    | 0    | 0    | 0    |
+| CIDR Notation:        | /25  | /26  | **/27** | /28  | /29  | /30  | /31  | /32  |
 
 Network Increment: **32**
 
@@ -212,8 +214,6 @@ Network Increment: **32**
 ​	Since the fourth octet falls between .160 and .192 the IP address is a member of the 205.175.17.160 Network
 
 ​	**N = 205.175.17.160**
-
-
 
 Broadcast: **205.175.17.191** (Next network  .192 - 1 = 191)
 
