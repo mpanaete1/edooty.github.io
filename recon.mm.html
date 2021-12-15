@@ -1,0 +1,595 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Passive/Active Reconnaissance</title>
+<style type="text/css">
+    li { list-style: none;  margin: 0; }
+    p { margin: 0; }
+
+    span.l { color: red; font-weight: bold; }
+
+    a.mapnode:link {text-decoration: none; color: black; }
+    a.mapnode:visited {text-decoration: none; color: black; }
+    a.mapnode:active {text-decoration: none; color: black; }
+    a.mapnode:hover {text-decoration: none; color: black; background: #eeeee0; }
+
+</style>
+<!-- ^ Position is not set to relative / absolute here because of Mozilla -->
+</head>
+<body>
+<p><span style="color: #000000;font-size: 150%;font-family: Arial, sans-serif; font-weight: bold; ">Passive/Active Reconnaissance</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-weight: bold; ">CheatSheets</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">https://highon.coffee/blog/penetration-testing-tools-cheat-sheet/#osint</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">https://pentestwiki.org/reconnaissance/</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://pentester.land/cheatsheets/2019/04/15/recon-resources.html</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">https://book.hacktricks.xyz/external-recon-methodology</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://pentester.land/cheatsheets/2019/03/25/compilation-of-recon-workflows.html</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://allabouttesting.org/passive-reconnaissance-techniques-for-penetration-testing/</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://allabouttesting.org/active-reconnaissance-tools-for-penetration-testing/</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Passive Reconnaissance</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-weight: bold; ">IP addresses / Sub-Domains</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">whois &lt;domian&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Google Searches</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">site:&lt;domain&gt; -site:&lt;not this domain&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://sitereport.netcraft.com/</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">subdomain matches *.&lt;domain&gt;.com</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Browsing/Spidering</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">Burp Proxy (passive mode)</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">httrack &lt;URL&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">DNS</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">securitytrails.com/dns-trail </span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">dnsrecon -r &lt;IP range&gt; -n &lt;google/cloudlfar dns&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">dnsrecon -a -d &lt;domain&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Assetfinder: https://github.com/tomnomnom/assetfinder</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">IP lookup: dig a &lt;domain&gt; @&lt;nameserver&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">Mail : dig mx &lt;domain&gt; @&lt;nameserver&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">https://pentester.land/cheatsheets/2018/11/14/subdomains-enumeration-cheatsheet.html</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">Sublist3r: &nbsp;https://github.com/aboul3la/Sublist3r</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">sublist3r -d &lt;domain&gt;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Inside target network</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">wireshark</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">tcpdump -X -i &lt;interface&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">HTTP Headers</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">https://securityheaders.com</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">People</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">Company Websites</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">Spokeo.com &nbsp;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; "> PeekYou.com</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Maltego</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">lookup emails,and other personal information given a &lt;domain&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Message Boards</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">User Forums</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Document metadata</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">Google : &nbsp;site:&lt;target_site&gt; filetype:xlsx | filetype:pptx | filetype:docx &#8220;salary&#8221;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Technologies</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">File Extensions</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Server responses</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Job Postings</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">indeed.com</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">monster.com</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Directory Listings</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Login Splash Pages</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Website Content</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Document Searches</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Internet of Things (IoT)</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">shodan.io</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">https://thedarksource.com/shodan-cheat-sheet/</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">https://www.nedb.io</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Platform Identification</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">wappalyzer.com</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">https://github.com/gokulapap/wappalyzer-cli</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://builtwith.com</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">WIFI</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">https://www.wigle.net</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">SMTP</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">https://www.kitterman.com/spf/validate.html</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://www.fraudmarc.com/dmarc-check </span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://mxtoolbox.com/DMARC.aspx</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://dmarcian.com/dmarc-inspector/</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Certificates</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">https://crt.sh</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://transparencyreport.google.com/https/certificates</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Content of Interest</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">Test pages</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Log Files</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">filetype:sql,dbf,mdf,dat,mdb</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Backup Files</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">site:&lt;target_site&gt; inurl:php.txt filetype:txt</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">web.archive.org</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Configuration files</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">filetype:.config,.conf,.cfg, .ini</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">External facing web portals, webmail, and admin consoles</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">site: &lt;target_site&gt; intitle:portal employee</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">site: &lt;target_site&gt; intitle:webmail</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">site: &lt;target_site&gt; inurl:phpmyadmin </span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Emails</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">hunter.io</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">theHarvester -d &lt;domain&gt; -l 300 -b &lt;google/bing/etc.&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Simply Email </span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">git clone https://github.com/killswitch-GUI/SimplyEmail.git</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">./SimplyEmail.py -all -e &lt;domain&gt;</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Social Media Sites</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">Linkedin</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Twitter</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Facebook/Meta</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Instagram</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Vulnerabilities</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">exploit-db.com</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">cvedetails.com</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Google Dorking</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">exploit-db.com/google-hacking-database</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Additional Websites</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">https://search.censys.io/</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://pastebin.com</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://gist.github.com/search</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">https://sitereport.netcraft.com</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">NIC Databases</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">RIPE: https://apps.db.ripe.net/db-web-ui/query</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">ARIN: http://whois.arin.net/ui/</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; ">FCC: https://www.fcc.gov/oet/ea/fccid</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Active Reconnaissance</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-weight: bold; ">DNS Zone Tranfers</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">Windows: nslookup -&gt; set type=any -&gt; ls -d &lt;domain&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">Linux: dig axfr &lt;domain&gt; @&lt;nameserver&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">DNS Bruteforce</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">dnsrecon -d &lt;domain&gt; -D &lt;wordlist&gt; -t std --xml &lt;output.xml&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Basic Banner Grab</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">nc -vn &lt;IP&gt; &lt;port&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">telnet &lt;IP&gt; &lt;port&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Inside the Network</span>
+<ul><li><span style="font-family: Arial, sans-serif; font-style: italic; ">nmap -sn -PE &lt;IP/24&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">netdiscover -r &lt;IP/CIDR&gt;</span>
+
+</li>
+<li><span style="font-family: Arial, sans-serif; font-style: italic; ">crackmapexec -t 100 &lt;IP/24&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; font-weight: bold; ">Port Scanning</span>
+<ul><li><span style="font-family: Arial, sans-serif; ">Nmap</span>
+<ul><li>default scan (-sS syn scan)
+<ul><li>nmap &lt;options&gt; &lt;IP&gt;
+
+</li>
+
+</ul>
+</li>
+<li>OS enum 
+<ul><li> nmap -O &lt;IP&gt;
+
+</li>
+
+</ul>
+</li>
+<li>Ports
+<ul><li>All: -p-
+
+</li>
+<li>Range: -p 1-433
+
+</li>
+
+</ul>
+</li>
+<li>Types
+<ul><li>Ping Scan
+<ul><li>-sn
+
+</li>
+
+</ul>
+</li>
+<li>Skip Host Discovery
+<ul><li>-Pn
+
+</li>
+
+</ul>
+</li>
+<li>Version detection
+<ul><li>-sV
+
+</li>
+
+</ul>
+</li>
+<li>CTF
+<ul><li>-A for all (version,OS)
+
+</li>
+
+</ul>
+</li>
+<li>Spoof IP 
+<ul><li>-s &lt;IP&gt;
+
+</li>
+
+</ul>
+</li>
+<li>Fragment Packet
+<ul><li>-f
+
+</li>
+
+</ul>
+</li>
+<li>Scan from a list of &nbsp;IPs
+<ul><li>-iL &lt;ip_list&gt;
+
+</li>
+
+</ul>
+</li>
+<li>UDP Scan
+<ul><li>-sU
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li>Timing
+<ul><li>-T(1-5) &nbsp;Higher is faster
+
+</li>
+
+</ul>
+</li>
+<li>Outputs
+<ul><li>-oN Normal
+<ul><li>Find IPs from output
+<ul><li>cat &lt;filename&gt; | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b"
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li>-oG &nbsp;Grep
+
+</li>
+<li>-oX &nbsp;XML format
+
+</li>
+<li>-oA &nbsp;outputs all 3 types
+
+</li>
+
+</ul>
+</li>
+<li>Scripts (Nmap Scripting Engine (NSE))
+<ul><li>Scan with default Scripts (NSE)
+<ul><li>-sC
+
+</li>
+
+</ul>
+</li>
+<li>nmap --script=&lt;ftp*,http*, etc.&gt; &lt;IP&gt;
+
+</li>
+<li>Location of Scripts
+<ul><li><span style="font-family: SansSerif, sans-serif; font-style: italic; ">/usr/share/nmap/scripts/ftp*,http*,etc..</span>
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">udp-proto-scanner</span>
+<ul><li>Send UPD probes
+
+</li>
+<li>https://github.com/CiscoCXSecurity/udp-proto-scanner
+
+</li>
+<li><span style="font-family: SansSerif, sans-serif; font-style: italic; ">udp-proto-scanner.pl -f &lt;ip list&gt; -p &lt;protocol/dns,ntp,nbt,tftp.etc.&gt;</span>
+
+</li>
+
+</ul>
+</li>
+<li><span style="font-family: Arial, sans-serif; ">Masscan</span>
+<ul><li>Scan for a selection of ports across a given subnet
+
+</li>
+<li>masscan -p&lt;port,ports&gt; &lt;IP/CIDR&gt;
+
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul></body>
+</html>
