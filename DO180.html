@@ -1,0 +1,692 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>DO180</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1>Red Hat Openshift I: Containers &amp; Kubernetes</h1><p><a href='index.html'><span>Home</span></a></p><p>🔲⬛️⬜️</p><p><strong><span>DO180</span></strong></p><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6"><a class="md-toc-inner" href="#introducing-container-technology">Introducing Container Technology</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n9"><a class="md-toc-inner" href="#overview">Overview</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n69"><a class="md-toc-inner" href="#container-architecture">Container Architecture</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n99"><a class="md-toc-inner" href="#overview-of-kubernetes-and-openshift">Overview of Kubernetes and OpenShift</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n104"><a class="md-toc-inner" href="#kubernetes-overview">Kubernetes Overview</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n155"><a class="md-toc-inner" href="#openshift-overview">OpenShift Overview</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n190"><a class="md-toc-inner" href="#creating-containerized-services">Creating Containerized Services</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n193"><a class="md-toc-inner" href="#fetching-container-images-with-podman">Fetching Container Images with Podman</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n252"><a class="md-toc-inner" href="#using-rootless-containers">Using Rootless Containers</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n265"><a class="md-toc-inner" href="#create-a-rootless-container">Create a Rootless Container</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n272"><a class="md-toc-inner" href="#managing-containers">Managing Containers</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n275"><a class="md-toc-inner" href="#container-life-cycle-management-with-podman">Container Life Cycle Management with Podman</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n283"><a class="md-toc-inner" href="#attaching-persistent-storage-to-containers">Attaching Persistent Storage to Containers</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n306"><a class="md-toc-inner" href="#accessing-containers">Accessing Containers</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n317"><a class="md-toc-inner" href="#managing-container-images">Managing Container Images</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n320"><a class="md-toc-inner" href="#accessing-registries">Accessing Registries</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n327"><a class="md-toc-inner" href="#configuring-registries-in-podman">Configuring Registries in Podman</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n332"><a class="md-toc-inner" href="#searching-for-images-in-registries">Searching for images in Registries</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n346"><a class="md-toc-inner" href="#creating-custom-container-images">Creating Custom Container Images</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n349"><a class="md-toc-inner" href="#reusing-existing-container-files">Reusing Existing Container Files</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n360"><a class="md-toc-inner" href="#rhel-universal-base-image-ubi">RHEL Universal Base Image (UBI)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n370"><a class="md-toc-inner" href="#building-custom-base-containers">Building Custom Base Containers</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n387"><a class="md-toc-inner" href="#deploying-containerized-applications-on-openshift">Deploying Containerized Applications on OpenShift</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n390"><a class="md-toc-inner" href="#kubernetes-and-openshift-architecture">Kubernetes and OpenShift Architecture</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n394"><a class="md-toc-inner" href="#openshift-resource-types">OpenShift Resource Types</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n403"><a class="md-toc-inner" href="#kubernetes-resource-types">Kubernetes Resource Types</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n419"><a class="md-toc-inner" href="#creating-kubernetes-resources">Creating Kubernetes Resources</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n446"><a class="md-toc-inner" href="#creating-routes">Creating Routes</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n456"><a class="md-toc-inner" href="#creating-applications-with-source-to-image">Creating Applications with Source-to-Image</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n466"><a class="md-toc-inner" href="#creating-applications-with-the-openshift-web-console">Creating Applications with the OpenShift Web Console</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n483"><a class="md-toc-inner" href="#creating-new-applications">Creating New Applications</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n499"><a class="md-toc-inner" href="#deploying-multi-container-applications">Deploying Multi-Container Applications</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n515"><a class="md-toc-inner" href="#deploying-muli-contianer-applications-on-openshift">Deploying Muli-Contianer Applications on OpenShift</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n520"><a class="md-toc-inner" href="#using-a-template-to-create-multi-app-containers">Using a Template to create Multi-app containers</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n533"><a class="md-toc-inner" href="#troubleshooting-container-applications">Troubleshooting Container Applications</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n536"><a class="md-toc-inner" href="#troubleshooting-s2i-builds-and-deployments">Troubleshooting S2I Builds and Deployments</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n547"><a class="md-toc-inner" href="#common-problems">Common Problems</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n560"><a class="md-toc-inner" href="#troubleshooting-containerized-applications">Troubleshooting Containerized Applications</a></span></p></div><h2 id='introducing-container-technology'><span>Introducing Container Technology</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><h3 id='overview'><span>Overview</span></h3><p><span>Containers are a set of one or more processes that are isolated from the rest of the system.</span></p><p><span>Containers provide many of the same benefits as Virtual machines, but require far fewer resources and are quick to start and stop. They also isolate the libraries and the runtime resources. </span></p><p><span>Each container can have separate libraries, great for version control and allows the work on one application without effecting the other. </span></p><figure><table><thead><tr><th style='text-align:center;' ><span>AppA</span></th><th style='text-align:center;' ><span>AppB</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><span>Libs A v1.8</span></td><td style='text-align:center;' ><span>Libs A v2.0</span></td></tr><tr><td style='text-align:center;' ><span>Container</span></td><td style='text-align:center;' ><span>Container</span></td></tr></tbody></table></figure><figure><table><thead><tr><th style='text-align:center;' ><span>HOST OS</span></th></tr></thead><tbody><tr><td style='text-align:center;' ><strong><span>Hardware</span></strong></td></tr></tbody></table></figure><p><span>The </span><a href='https://opencontainers.org/'><span>Open Container Initiative</span></a><span> (OCI) provides a set of industry standards that define a container runtime specification and a container image specification.</span></p><p><strong><span>Container Image </span></strong><span>- You can download or create your own containers. You may use a container image on multiple hosts creating several instances , multiple web servers (httpd) for example.</span></p><p><strong><span>Image Registry</span></strong><span> - Contains different versions of services known as tags. You pull/download the image from a image registry.</span></p><ul><li><span>Red Hat Container Catalog [</span><a href='https://registry.redhat.io' target='_blank' class='url'>https://registry.redhat.io</a><span>]</span></li><li><span>Docker Hub [</span><a href='https://hub.docker.com' target='_blank' class='url'>https://hub.docker.com</a><span>]</span></li><li><span>Red Hat Quay [</span><a href='https://quay.io/' target='_blank' class='url'>https://quay.io/</a><span>]</span></li><li><span>Google Container Registry [</span><a href='https://cloud.google.com/container-registry/' target='_blank' class='url'>https://cloud.google.com/container-registry/</a><span>]</span></li><li><span>Amazon Elastic Container Registry [</span><a href='https://aws.amazon.com/ecr/' target='_blank' class='url'>https://aws.amazon.com/ecr/</a><span>]</span></li></ul><p><span>There are several container engines available to manage and execute individual containers</span></p><ul><li><span>Rocket</span></li><li><span>Drawbridge</span></li><li><span>LXC</span></li><li><span>Docker</span></li><li><span>Podman.  Podman is available in Red Hat Enterprise Linux.</span></li></ul><p><span>Major advantages to using containers:</span></p><ul><li><p><span>Low hardware footprint</span></p><ul><li><span>	</span><span>1 core = 1000 millicores</span></li></ul></li><li><p><span>Environment isolation</span></p></li><li><p><span>Quick Deployment</span></p></li><li><p><span>Multiple environment deployment</span></p></li><li><p><span>Re-usability</span></p></li></ul><h3 id='container-architecture'><span>Container Architecture</span></h3><p><span>Focus on the basic concept of enabling processes to run isolated while still accessing system resources.</span></p><figure><table><thead><tr><th><span>Feature</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Namespaces</span></td><td><span>isolates specific system resources usually visible to all processes. Only processes that are members of that namespace can see those resources.</span><br><span>-</span><code>lsns</code><span> list namespaces</span><br><span>-</span><code>nsenter</code><span> run program with namespaces of other processes</span></td></tr><tr><td><span>Control Groups (cgroups)</span></td><td><span>cgroups partition sets of processes and their children into groups to manage and limit the resources they consume. Place restrictions on the amount of system resources a process could use</span><br><span>-</span><code>mount</code><span> will show cgroups</span><br><span>-</span><code>ls /sys/fs/cgroup</code><span> and </span><code>ls /sys/fs/cgroup/cpu,cpuacct/</code><span> to show cgroup info</span><br><span>-</span><code>cgcreate -g cpu:&lt;name&gt;</code><span> create a cgroup</span><br><span>-</span><code>cgclassify -g cpu:&lt;name&gt; &lt;PID&gt;</code><span> add processes to a cgroup after limiting max resource in </span><code>/sys/fs/cgroup/&lt;name&gt;</code></td></tr><tr><td><span>Seccomp</span></td><td><span>limits how processes could use system calls. used to restrict the actions available within the container.</span></td></tr><tr><td><span>SELinux</span></td><td><span>protect processes from each other and to protect the host system from its running processes</span></td></tr></tbody></table></figure><p><span>Containers are processes in the Linux kernel making use of those security features to create an isolated environment.</span></p><p><strong><span>Managing Containers with Podman</span></strong></p><p><span>Podman is an open source tool for mapping containers and container images and interacting with image registries. </span></p><ul><li><span>uses image format specified by the Open Container Initiative (OCI)</span></li><li><span>stores local images in a local file-system, avoiding unnesessary client/server architecture</span></li><li><span>same command patterns as Docker CLI</span></li><li><span>Compatible with Kubernetes.</span></li></ul><h3 id='overview-of-kubernetes-and-openshift'><span>Overview of Kubernetes and OpenShift</span></h3><p><a href='kubernetes.html'><span>Top</span></a></p><p><strong><span>Limitations of Containers</span></strong></p><p><span>When the number of containers managed by the organization grow they become harder to manage.</span></p><p><span>Using a orchestration technology can help manage containers more effectively</span></p><h4 id='kubernetes-overview'><span>Kubernetes Overview</span></h4><p><span>An orchestration service that simplifies the management and scaling of containerized applications.</span></p><p><span>The smallest unit is a pod. A pod consists of one or more containers with its storage resources and IP address that represent a single application.</span></p><figure><table><thead><tr><th><span>Feature</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Service discovery and load balancing</span></td><td><span>enables inter-service communication by assigning one DNS entry to each set of containers</span></td></tr><tr><td><span>Horizontal scaling</span></td><td><span>can scale up or down manually or automatically with a configuration set</span></td></tr><tr><td><span>Self-healing</span></td><td><span>user-defined health checks to monitor containers</span></td></tr><tr><td><span>Automated rollout</span></td><td><span>roll updates to your containers while checking their status. If something goes wrong Kubernetes can roll back</span></td></tr><tr><td><span>Secrets and configuration management</span></td><td><span>manage configuration settings and secrets without rebuilding the containers</span></td></tr><tr><td><span>Operators</span></td><td><span>packaged Kubernetes applications that bring the knowledge of the applications life cycle into the Kubernetes cluster. Use API to update the clusters state.</span></td></tr></tbody></table></figure><p><strong><span>Terminology</span></strong></p><figure><table><thead><tr><th><span>Term</span></th><th><span>Definition</span></th></tr></thead><tbody><tr><td><span>Node</span></td><td><span>A server that hosts applications in a Kubernetes cluster.</span></td></tr><tr><td><span>Control Plane</span></td><td><span>Provides basic cluster services such as APIs or controllers. mangaes scaling</span></td></tr><tr><td><span>Compute Node</span></td><td><span>This node executes workloads for the cluster. Application pods are scheduled</span><br><span>onto compute nodes.</span></td></tr><tr><td><span>Resource</span></td><td><span>Resources are any kind of component definition managed by Kubernetes.</span><br><span>Resources contain the configuration of the managed component (for example,</span><br><span>the role assigned to a node), and the current state of the component (for</span><br><span>example, if the node is available).</span></td></tr><tr><td><span>Controller</span></td><td><span>A controller is a Kubernetes process that watches resources and makes</span><br><span>changes attempting to move the current state towards the desired state.</span></td></tr><tr><td><span>Label</span></td><td><span>A key-value pair that can be assigned to any Kubernetes resource. Selectors</span><br><span>use labels to filter eligible resources for scheduling and other operations.</span></td></tr><tr><td><span>Namespace</span></td><td><span>A scope for Kubernetes resources and processes, so that resources with the</span><br><span>same name can be used in different boundaries.</span></td></tr></tbody></table></figure><h4 id='openshift-overview'><span>OpenShift Overview</span></h4><p><span>Red Hat OpenShift Container Platform (RHOCP) is a set of modular components and services built on top of Kubernetes container infrastructure. Provides a PaaS, such as remote access, increased security, and auditing. </span></p><figure><table><thead><tr><th><span>Feature</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><span>Integrated developer workflow</span></td><td><span>built-in container registry</span></td></tr><tr><td><span>Routes</span></td><td><span>easily expose services</span></td></tr><tr><td><span>Metrics and logging</span></td><td><span>built-in, self-analyzing metrics service and logging</span></td></tr><tr><td><span>Unified UI</span></td><td><span>unified tools and a UI to manage all capabilities</span></td></tr></tbody></table></figure><p><strong><span>Terminology</span></strong></p><figure><table><thead><tr><th><span>Term</span></th><th><span>Definition</span></th></tr></thead><tbody><tr><td><span>Infra Node</span></td><td><span>A node server containing infrastructure services like monitoring, logging, or external routing.</span></td></tr><tr><td><span>Console</span></td><td><span>A web UI provided by the RHOCP cluster that allows developers and administrators to interact with cluster resources.</span></td></tr><tr><td><span>Project</span></td><td><span>OpenShift extension of Kubernetes&#39; namespaces. Allows the definition of user access control (UAC) to resources.</span></td></tr></tbody></table></figure><p>&nbsp;</p><hr /><p>&nbsp;</p><h2 id='creating-containerized-services'><span>Creating Containerized Services</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><h3 id='fetching-container-images-with-podman'><span>Fetching Container Images with Podman</span></h3><p><span>applications can run inside containers, providing an isolated and controlled execution environment.</span></p><p><span>Running an application inside a container requires a container image and a file system bundle that provides all the necessary files.</span></p><p><code>yum module install container-tools</code></p><figure><table><thead><tr><th><span>Command</span></th><th><span>Description</span></th></tr></thead><tbody><tr><td><code>podman search &lt;search term&gt;</code></td><td><span>find available images from remote or local registries.</span><br><span>if access is in registry (red hat) they are not free</span></td></tr><tr><td><code>podman login &lt;registry name&gt;</code></td><td><span>login to a registry</span></td></tr><tr><td><code>podman pull &lt;repo image&gt;</code></td><td><span>download the image and save it locally for future use</span></td></tr><tr><td><span>Naming syntax</span></td><td><span>registry_name/user_name/image_name:tag (version)</span><br><span>if no tag is present, latest is assumed</span></td></tr><tr><td><code>podman images</code></td><td><span>check what images are available in local storage</span></td></tr><tr><td><code>podman inspect</code></td><td><span>get information about image</span></td></tr><tr><td><code>podman run &lt;image&gt;</code></td><td><span>run a image/container</span><br><code>-d</code><span>  run command in the background</span><br><code>-p &lt;host port&gt;:&lt;container port&gt;</code><span>  bind server port to local port (port forwarding)</span><br><code>--name &lt;name&gt;</code><span> set the container name</span><br><code>-it</code><span> start a interactive shell on the container (t tty, i interactive)</span><br><code>-e &lt;external parameter&gt;</code><span> inject environment variables into a container at startup (</span><code>-e MYSQL_USER=redat</code><span> for example)</span><br><code>-v /src/volume:/host/volume</code><span> directory pointer (/html:/var/www/html)</span><br><code>:Z</code><span> added to the end of  </span><code>-v /directory:/directory</code><strong><span>:Z</span></strong><span> Maintains selinux lables</span></td></tr><tr><td><code>podman ps -a</code></td><td><span>show all containers, even stopped ones, just </span><code>ps</code><span> will show running only</span></td></tr><tr><td><code>podman exec &lt;container name&gt; bash OR &lt;command&gt;</code></td><td><span>Gain bash shell or command on a container while running or not</span></td></tr><tr><td><code>podman stop &lt;container name&gt;</code></td><td><span>Stop a container</span></td></tr><tr><td><code>podman rm &lt;container name&gt;</code></td><td><span>Remove a container (must be stopped first)</span></td></tr><tr><td><code>podman restart &lt;container name&gt;</code></td><td><span>Restart a container</span></td></tr><tr><td><code>podman logs &lt;container image&gt;</code></td><td><span>Grab logs from the container</span></td></tr><tr><td><code>podman commit -a &#39;&lt;author&gt;&#39; &lt;current container name&gt; &lt;new container name with tag&gt;</code></td><td><span>Save image as a new image. Snapshots. </span><br><span>You will need a tag and upload to a registry to use it</span><br><code>podman tag localhost/&lt;newcontainer name registry&gt; &lt;registry/newname:latest</code><br><code>podman login quay.io</code><br><code>podman push &lt;quay.io/eduty/&lt;newname&gt;</code></td></tr><tr><td><code>podman save -o &lt;name&gt;.tar localhost/&lt;name&gt;</code></td><td><span>save a container as a tar archive</span></td></tr><tr><td><code>podman stat &lt;container name&gt;</code></td><td><span>stats/resources being used by the container</span></td></tr><tr><td><code>podman top &lt;container name&gt;</code></td><td><span>live view of processes on container</span></td></tr></tbody></table></figure><h3 id='using-rootless-containers'><span>Using Rootless Containers</span></h3><p><span>Best practice is to containerize applications in a way that do not require a privilege user to run. applications should use a well-known user instead.</span></p><p><span>Rootless Containers allows code to run with root privileges without having to run as hosts root user.</span></p><ul><li><span>Attackers will not gain root privileges on host if compromised</span></li><li><span>Allows mulitple unprivileged users to run containers on same machine</span></li><li><span>Isolation inside nested containers</span></li></ul><p><strong><span>User Namespaces</span></strong><span> rootless containers use to make applicaiton code appear to be running as root. user has access to the user namespace only.</span></p><p><strong><span>Networking</span></strong><span> works by forking into the containers user and network namespaces and creating a tap device that becomes the default route. </span><code>-p &lt;host port&gt;:&lt;container port&gt;</code></p><p><strong><span>Storage</span></strong><span> creates a new storage driver, FUSE-OverlayFS is a user-space implementaiton of Overlay. Overlay will create storage layers. </span><code>-v &lt;container mount&gt;:&lt;host location&gt;</code></p><h4 id='create-a-rootless-container'><span>Create a Rootless Container</span></h4><p><span>create and login to the user you want to use as the container user</span></p><p><code>useradd &lt;container username&gt;</code></p><p><span>Make Directory </span><code>mkdir /containers &amp;&amp; cd /containers</code></p><p><span>Adjust permisisons   </span><code>chown -R &lt;container username&gt;: /containers</code></p><hr /><p>&nbsp;</p><h2 id='managing-containers'><span>Managing Containers</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><h3 id='container-life-cycle-management-with-podman'><span>Container Life Cycle Management with Podman</span></h3><p><span>Podman allows you not only to run containers but also run them in the background, execute new processes inside them, and provide them with resources, such as file systems or a network (see podman table above)</span></p><p><span>subcommands </span><code>podman &lt;tab&gt; &lt;tab&gt;</code></p><p><img src="/home/eduty/Pictures/sub1.png" referrerpolicy="no-referrer" alt="sub"></p><p>&nbsp;</p><p><span>You can use some of the subcommands to extract information for debugging, updating, or for reporting purposes. </span></p><p><img src="/home/eduty/Pictures/sub2.png" referrerpolicy="no-referrer" alt="sub2"></p><p>&nbsp;</p><h3 id='attaching-persistent-storage-to-containers'><span>Attaching Persistent Storage to Containers</span></h3><p><a href='kubernetes.html'><span>Top</span></a></p><p><span>container storage is ephemeral meaning its contents are not preserved after the container is removed. </span></p><p><span>A running container gets a new layer over its container image, this layer is the conatiner storage. The storage is volatile, and is exclusive to the running container.</span></p><p><strong><span>Preparing the Host Direcotry</span></strong></p><p><span>Podman can mount host directories inside a running conatiner. The container sees these host directories as part of the conatiner storage. </span></p><p><span>If a container failes, podman can create a new container using the same host directory (typically a mounted directory), keeping data available. </span></p><ol start='' ><li><p><span>create directory </span><code>mkdir /directory</code></p></li><li><p><span>provide session to execute commands within the same user namespace as the process running inside the container</span></p><p><code>podman unshare chown -R &lt;numeric user ID&gt;:&lt;numerica user ID&gt; /directory</code></p></li><li><p><span>Apply selinux context to the directory </span></p><p><code>sudo semanage fcontext -a -t container_file_t &#39;/directroy(./*)&#39;</code></p></li><li><p><span>Apply selinux container policy</span></p><p><code>sudo restorecon -Rv /directory</code></p></li></ol><p><span>	</span><strong><span>Mounting a Volume</span></strong></p><p><span>	</span><span>mount the newly configured directory to a container. </span></p><p><span>	</span><code>-v &lt;host directory (/directory)&gt;:&lt;container directory&gt;:Z</code></p><p><span>		</span><span>use </span><code>:Z</code><span> at the end if you want to skip steps 3 and 4 above</span></p><h3 id='accessing-containers'><span>Accessing Containers</span></h3><p><span>We can access external container services by defining port forwarding.</span></p><p><code>-p &lt;host port&gt;:&lt;Container port&gt;</code><span> </span></p><p><span>you may also specify an IP Address </span><code>&lt;IP Address&gt;:&lt;host port&gt;:&lt;Container port&gt;</code></p><p><span>If a port is not specified for the host port, Podman will automatically assign a random port. Podman will do the same if no container port is specified. </span></p><p><span>	</span><span>To see the port assigned </span><code>podman port &lt;container name&gt;</code></p><p><code>podman network</code><span> is a new feature that is available on podmans newer versions allowing you to create seperate networks for your containers (not available in rootless mode)</span></p><p><span>	</span><code>podman network create</code></p><p><span>	</span></p><hr /><p>&nbsp;</p><h2 id='managing-container-images'><span>Managing Container Images</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><h3 id='accessing-registries'><span>Accessing Registries</span></h3><p><strong><span>Public Registries</span></strong></p><p><span>image registries offer container images to download. Podman searches for and downloads images from public and private registries. </span></p><p><span>Red Hat Container Catalog is a public registry (red hat io is private). </span></p><p><span>Quay.io is another public repository sponsored by Red Hat.  </span></p><p><strong><span>Private Registries</span></strong></p><p><span>Sometimes registries are private due to company privacy and secret protection, legal restrictions and laws, and avoidance of publishing images in development. </span></p><h4 id='configuring-registries-in-podman'><span>Configuring Registries in Podman</span></h4><p><span>You need to update the </span><code>/etc/containers/registries.conf</code><span> file </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><span><span>​</span>x</span></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[registries.search]</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">registries = ["registry.access.redhat.com", "quay.io"]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><p><span>To support insecure connections add the registry name to the registries entry  </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">[registries.insecure] </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">registries = ['localhost:5000']</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><h4 id='searching-for-images-in-registries'><span>Searching for images in Registries</span></h4><p><code>podman search &lt;option&gt; &lt;term&gt;</code></p><p><span>	</span><code>--limit &lt;number&gt;</code><span>	</span><span>limit number of listed images</span></p><p><span>	</span><code>--filter &lt;filter=value&gt;</code><span> filter based on condition. stars = </span><number><span>, official=&lt;true|false&gt;</span></p><p><span>	</span><code>--tls-verify &lt;true|false&gt;</code><span> HTTPS certificate validation</span></p><p><span>	</span><code>--list-tags</code><span> list available tags/versions</span></p><p><strong><span>Registry HTTP API</span></strong></p><p><span>List all repositories available in the registry using curl </span></p><p><code>curl -Ls https://&lt;server&gt;/v2/_catalog?n=3</code></p><p><code>/v2/&lt;name&gt;/tags/list</code><span> provides a list of tags for a single image</span></p><p><strong><span>Registry Authentication</span></strong></p><p><code>podman login &lt;registry&gt;</code></p><hr /><p>&nbsp;</p><h2 id='creating-custom-container-images'><span>Creating Custom Container Images</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><h4 id='reusing-existing-container-files'><span>Reusing Existing Container Files</span></h4><p><span>Container files are easy to share, easy version control, reusability, and extend features</span></p><p><span>Extending images is easy, called a child image. A Child image incorporates everything in the parent image and all changes made to create it.</span></p><p><span>You can find Container files in and reuse them </span></p><ul><li><span>Quay.io</span></li><li><span>Docker Hub </span></li><li><span>Red Hat Software Collections Library (RHSCL)</span></li></ul><h5 id='rhel-universal-base-image-ubi'><span>RHEL Universal Base Image (UBI)</span></h5><ul><li><span>UBI - standard images</span></li><li><span>UBI-MICRO - 12-40MB in size, smaller version</span></li><li><span>UBI-MINIMAL - 40-100MB</span></li><li><span>UBI-INIT - Systemd unit (multiple daemons/services on one container)</span></li></ul><h4 id='building-custom-base-containers'><span>Building Custom Base Containers</span></h4><ol start='' ><li><span>Create a working directory</span></li><li><span>Write the Container File</span></li><li><span>Build the Image with Podman</span></li></ol><p><strong><span>Write the Container File</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#Comment</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># this base image is pulled from red hat</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">FROM ubi8/ubi:8.3</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">MAINTAINER &lt;user/author&gt; &lt;email&gt;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">LABEL description="This is my first web server."</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">RUN yum install httpd -y &amp;&amp; \</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>yum clean all</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">COPY index.html /var/www/html/index.html</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#create the index.html page</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">EXPOSE 80</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ENV Loglevel "info"</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">USER apache</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># Specifies the default command to execute when the image runes in a container (default is # /bin/bash -c)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># ExEC from Json</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># ENTRYPOINT ["command", "param1", "param2"]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># CMD ["param1", "param2"]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">#</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># Shell Form</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># ENTRYPOINT command param1 param2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"># CMD param1 param2</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ENTRYPOINT ["/usr/sbin/httpd"]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">CMD ["httpd", "-D", "FOREGROUND"] </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 828px;"></div><div class="CodeMirror-gutters" style="display: none; height: 828px;"></div></div></div></pre><p><strong><span>Build/run/test the Image</span></strong></p><p><code>podman build -t do180/webserver:&lt;tag&gt; &lt;directory&gt;</code></p><p><span>check with </span><code>podman images</code></p><p><span>run the image </span><code>podman run -d -p 8084:80 &lt;name of image created&gt;</code></p><p><span>	</span><code>curl localhost:8084</code></p><hr /><p>&nbsp;</p><h2 id='deploying-containerized-applications-on-openshift'><span>Deploying Containerized Applications on OpenShift</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><h4 id='kubernetes-and-openshift-architecture'><span>Kubernetes and OpenShift Architecture</span></h4><p><span>see Kubernetes an OpenShift Overview sections above for additional information.</span></p><p>&nbsp;</p><p><img src="/home/eduty/Pictures/architecture.png" referrerpolicy="no-referrer" alt="arch"></p><h5 id='openshift-resource-types'><span>OpenShift Resource Types</span></h5><ul><li><strong><span>Deployment and Deployment config (dc)</span></strong><span>   -  contains the configuration to be applied to all containers of each pod replica, such as base image, tags, storage definitions, automatic rollbacks, and the command to be executed when the container starts.</span></li><li><strong><span>Build config (bc)</span></strong><span>   -  defines a process to be executed in the OpenShift project. provides continuous delievery workflows. Used only with Source to Image (S2I), URL to source (github) + builder (image) = new image (docker file) this is sent to bc and creates a build pod</span></li><li><strong><span>Routes</span></strong><span>  -  represents a DNS host name recognized by the OpenShift routes as an ingress point. Domain assigned (abc.de.com) -&gt; Router Pod -&gt; Cluster</span></li></ul><p>&nbsp;</p><h5 id='kubernetes-resource-types'><span>Kubernetes Resource Types</span></h5><p><span>Six main resource types that can be configured using a YAML or JSON file, or using OpenShift management tools.</span></p><ul><li><strong><span>Pods (po)</span></strong><span>  -  collection of containers that share resources</span></li><li><strong><span>Services (svc)</span></strong><span>  -  single IP/port combination that provides access to a pool of pods</span></li><li><strong><span>Replication Controllers (rc)</span></strong><span>  -  defines how pods are replicated into different nodes</span></li><li><strong><span>Persistent Volumes (pv)</span></strong><span>  -  defines storage areas to be used by Kubernetes pods</span></li><li><strong><span>Persistent Volume Claims (pvc)</span></strong><span>  -  represents a request for storage by a pod. usually by mounting the storage into the containers file system.</span></li><li><strong><span>ConfigMaps (cm) and Secrets</span></strong><span>  -  set of keys and values that can be used by other resources</span></li></ul><p>&nbsp;</p><h4 id='creating-kubernetes-resources'><span>Creating Kubernetes Resources</span></h4><p><span>The main method of interacting with the Red Hat OpenShift Container Platform (RHOCP) cluster is the </span><code>oc</code><span> command. RHOCP runs containers inside Kubernetes pods, OpenShift needs a pod resource definition, provided as either a JSON or YAML text file. </span></p><p><span>Most resources require you to log in first  </span><code>oc login &lt;clusterURL/API&gt; -u &lt;username&gt; -p &lt;password&gt;</code></p><p><span>set up config : </span><code>/usr/local/etc/ocp4.conf</code></p><p><code>oc &lt;command&gt;</code><span>	</span></p><p><span>		</span><span>you can install from OpenShift , oc- OpenShift Command Line Interface (CLI). Be sure to have same oc </span><span>	</span><span>    version as your cluster.</span></p><p><span>		</span><span>List projects  </span><code>os projects</code><span> or </span><code>oc get all|pods</code></p><p><span>			</span><span>create project </span><code>oc new-project &lt;name&gt;</code></p><p><span>		</span><span>create a pod using the contents of a .yaml  </span><code>oc create -f pod.yaml</code></p><p><span>		</span><span>get interactive shell   </span><code>oc exec -it &lt;name of container&gt; bash</code><span>  </span></p><p><span>				</span><code>oc rsh &lt;name&gt;</code></p><p><span>		</span><span>get persistent volumes </span><code>oc get pv|pvcc</code></p><p><span>		</span><span>delete </span><code>oc delete &lt;resource&gt;</code></p><p><span>		</span><span>Add applications or used to generate defaults :</span></p><p><code>oc new-app &lt;DockerImage|S2I(URI to source)|Template(parameters -p)|URL to Dockerfile&gt; --name &lt;name&gt; -e &lt;env. variables&gt;</code></p><p><span>		</span><span>Expose application  </span><code>oc expose &lt;service/name&gt;</code></p><p><span>		</span><span>Description </span><code>os describe &lt;pod/name-ID(template hash)&gt;</code></p><p><span>			</span><span>get YAML/JSON format </span><code>oc get pod/&lt;name&gt; -o yaml|json</code></p><p><span>		</span><span>Using a template</span></p><p><span>				</span><code>oc new-app --template=&lt;template name&gt; -p &lt;parameters&gt;</code></p><p><span>		</span><span>Edit deployment config for pods    </span><code>oc edit dc</code></p><p><span>		</span><span>Port forward </span><code>oc port-forward &lt;name&gt; &lt;port&gt;:&lt;port&gt;</code></p><p>&nbsp;</p><p><strong><span>Note</span></strong><span>: Most common practice is to copy a yaml file from OpenShift Web UI and adjust as nessasary</span></p><p><u><span>WildFly application server YAML Example</span></u><span>:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">apiVersion: v1</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">kind: Pod &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; #Define a kubernets pod resource type</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">metadata:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>name: wildfly<span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span>  #unique name<span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>labels:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>name: wildfly</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">spec:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>containers:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>- resources:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>  limits:</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>cpu: 0.5</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>image: do276/todojee<span class="cm-tab" role="presentation" cm-text="	">    </span>#define container image name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>name: wildfly</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" class="cm-tab-wrap-hack" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>ports:<span class="cm-tab" role="presentation" cm-text="	">  </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>- containerPort: 8080<span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span>#Exposed port on container</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>  name: wildfly</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>env:<span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>#A collection of environment variables</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-tab" role="presentation" cm-text="	">   </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>- name: MYSQL_ENV_MYSQL_DATABASE</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;  value: items</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span> &nbsp; &nbsp;  - name: MYSQL_ENV_MYSQL_USER</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>value: user1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>  - name: MYSQL_ENV_MYSQL_PASSWORD</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>value: mypa55</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 529px;"></div><div class="CodeMirror-gutters" style="display: none; height: 529px;"></div></div></div></pre><p>&nbsp;</p><h4 id='creating-routes'><span>Creating Routes</span></h4><p><a href='kubernetes.html'><span>Top</span></a></p><p><span>Services allow for network access between pods inside an OpenShift instance, and routes allow for network access to pods from users and applications outside the OpenShift Instance</span></p><p><span>A route connects a public facing IP and DNS to an internal facing service IP.</span></p><p><span>	</span><span>Default implementation : HAProxy</span></p><p><code>oc expose &lt;service name&gt; --name &lt;name|optional&gt;</code></p><p><code>os describe route</code></p><p><code>oc get pod --all-namespaces | grep router</code></p><p>&nbsp;</p><p>&nbsp;</p><h4 id='creating-applications-with-source-to-image'><span>Creating Applications with Source-to-Image</span></h4><p><span>Source-to-image (S2I) is a tool that makes it easy to build container images from application source code. Takes an applications source code from git repository and injects the source code into a base container.</span></p><p><span>S2I creates a Deployment and all its dependent resources</span></p><p><code>oc new-app &lt;source URL|builder image&gt;</code></p><p><span>	</span><u><span>source url example</span></u><span>:</span></p><p><span>			</span><span>php:</span><tag><span>~</span><a href='https://github.com/' target='_blank' class='url'>https://github.com/</a><username><span>/DO180-apps --context-dir php-helloworld --name </span><span>		</span><span> </span><span>			</span><span>helloworld</span></p><p><code>oc get is</code><span>  shows all image streams</span></p><p><code>oc logs -f buildconfig/&lt;name&gt;</code><span>  read build logs </span></p><p><span>Requres web hooks on git in order to have automatic updates.</span></p><p>&nbsp;</p><h3 id='creating-applications-with-the-openshift-web-console'><span>Creating Applications with the OpenShift Web Console</span></h3><p><span>Allows you to execute many of the same tasks as the CLI.</span></p><p><span>Accessing the OpenShift Web Console</span></p><p><code>oc whoami --show-console</code><span> show console link</span></p><p><span>default url : </span><a href='https://console-openshift-console' target='_blank' class='url'>https://console-openshift-console</a><span>.{wildcard DNS domain for the RHOCP cluster}/</span></p><p><span>Uses REST API to communicate with the clusters. </span></p><p><strong><span>Home --&gt; Projects</span></strong><span> page to list,create,edit, or delete  projects</span></p><p><strong><span>Home --&gt; Overview</span></strong><span> general information and metrics about the cluster</span></p><p><span>OperatorHub - catalog that allows you to discover, search and install operators in the cluster</span></p><p><span>Workloads - enable management of several resources</span></p><p><span>Networking - manage OpenShift resources that affect application access, such as services and routes</span></p><p><span>Storage - configure persistent storage</span></p><p><span>Builds - list of project build configurations.</span></p><p><span>Compute - access and manage the compute nodes as well as health checks</span></p><p><span>User Management - configure authentication and authorization (users,groups, roles,service accounts)</span></p><p><span>Administration - manage cluster and project settings.</span></p><p>&nbsp;</p><h4 id='creating-new-applications'><span>Creating New Applications</span></h4><p><span>From the Developer perspective use the +Add to select a way to create a new application.</span></p><p><span>You have several options to create a new application</span></p><ul><li><span>Container image</span></li><li><span>YAML file</span></li><li><span>From Git</span></li><li><span>DockerFile</span></li></ul><p><strong><span>Build Management</span></strong><span> from the Administrator perspective use Build Configs after you add a source-to-image app to a project</span></p><p><strong><span>Manage Deployed Applications</span></strong><span> Can be found in the Workloads menu</span></p><hr /><p>&nbsp;</p><h2 id='deploying-multi-container-applications'><span>Deploying Multi-Container Applications</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><p><span>multiple frontend,backend, and database containers need to be able to communicate with each other</span></p><p><span>CNI - responsible to provide networking on  host containers</span></p><p><span>	</span><span>as root user - </span><code>cat /etc/cni/net.d/87-podman..</code></p><p><span>		</span><span>information about the bridge connection</span></p><p><span>		</span><code>podman network</code><span> create and can assign networks to seperate containers</span></p><p><span>	</span><span>If a node goes down, a new node will start automatically to enable connectivity. </span></p><p><span>Rootless containers require port forwarding when starting the container.</span></p><p><code>oc get svc</code><span> show service</span></p><p><span>	</span><span>Name, Type, Cluster-IP , External IP, Ports , Age</span></p><p><code>oc describe svc</code><span> - show env. variables for the services on your contianer</span></p><p><span>	</span><span>Endpoints, Target Ports, IP, Events</span></p><p><span>Vairables provided in your continer files env. variables alllow for multi-service/continer applicaitons.</span></p><p><span>	</span><span>.yaml file will have pods that connect to the other pods in the file through </span><span>	</span><span>port forwarding and varialbes</span></p><h4 id='deploying-muli-contianer-applications-on-openshift'><span>Deploying Muli-Contianer Applications on OpenShift</span></h4><p><code>oc whoami --show-console</code><span> show console URL</span></p><p><span>Using env. variables allows you to share information between containers with Podman. Kubernetes improves on this ability by creating services for your containers.</span></p><p><span>When a pod starts Kubernetes automatically generates env. variables for each service in the same namespace</span></p><p><span>env variables are defined for the IP address and port number where the service is available.</span></p><h4 id='using-a-template-to-create-multi-app-containers'><span>Using a Template to create Multi-app containers</span></h4><p><code>oc get templates -n &lt;namespace/openshift&gt;</code></p><p><span>shows how many parameters and how many are blank that you can fill out as well as how many objects that will be created</span></p><p><strong><span>OpenShift</span></strong></p><p><span>Create a project -&gt; go to developer view --&gt; add (dockerfile, yaml, git, container image, from catalog)</span></p><p><span>From Catalog is where you would find templates to use</span></p><p><span>	</span><span>After initiation you can choose namespace, versions, memory, volume capacity, hostname, context directory, Git web hooks, etc.</span></p><p><code>os describe template &lt;templatename&gt; -n &lt;openshift/namespace&gt;</code></p><p><code>oc delete all -l app=helloworld</code></p><p><code>oc process -f &lt;filename&gt;</code><span> generate a list of resources to create a new applicaiton. process the template</span></p><hr /><p>&nbsp;</p><p>&nbsp;</p><h2 id='troubleshooting-container-applications'><span>Troubleshooting Container Applications</span></h2><p><a href='kubernetes.html'><span>Top</span></a></p><p>🔲⬛️⬜️</p><h4 id='troubleshooting-s2i-builds-and-deployments'><span>Troubleshooting S2I Builds and Deployments</span></h4><p><span>S2I image creation process is composed of two major steps</span></p><ol start='' ><li><span>Build step responsible for compiling source code, downloading library dependencies, and packaging the application as a container image. The build process creates a pod named </span><application-name><span>-build-</span><number><span>-</span><string></li><li><span>Deployment Step responsible  for starting a pod and making the applicaton available for Openshift. </span></li></ol><p><span>The web console can be used to view both of these processes</span></p><p><span>For any failures or startup issues you can view the logs </span><code>oc logs bc/&lt;application-name&gt;</code></p><p><span>After fixing any issues run </span><code>oc start-build &lt;application name&gt;</code><span> to request a new buld.</span></p><p><span>Check deployment logs </span><code>oc logs deployment/&lt;application-name&gt;</code></p><h4 id='common-problems'><span>Common Problems</span></h4><p><span>Source code requires some customization that may be available in containerized environments, such as database credentials, file system access, or message queue information. Again use the </span><code>oc logs</code></p><p><strong><span>Permissions</span></strong><span> access denied due to wrong permissions, or incorrect environment permissions set by administrators. S2I images enforce the use of a different user that the root user to access file systems and external resources.</span></p><p><span>some containers may require a specific user ID, whereas S2I is designed to run containers using random user per the default OpenShift security policy</span></p><p><code>oc adm policy add-scc-to-user &lt;user id&gt; -z default</code><span> relax the OpenShift project security </span></p><p><span>	</span><span>you must set folder permissions and SELinux requirements.</span></p><p><strong><span>Invalid Parameters</span></strong></p><p><span>Ensure that the same values for parameters reach all containers in the applicaiton. centralize shared parameters in ConfigMaps which can be injected throught the deployment into containers as environment varialbes. Injecting the same ConfigMap ensures that the same env. variables and values are available.</span></p><p><strong><span>Volume Mount Errors</span></strong></p><p><span>a pod might not be able to allocate a persistent volume claim. To resolve the issue delete the persistent volume claim and then the persisten volume. then recreate the persistent volume.</span></p><p><strong><span>Obsolete Images</span></strong></p><p><span>OpenShift pulls images from the source indicated in the image stream unless it locates it locally. If you push a new image to the registry with the same name and tag, you must remove the image from each node the pod is scheduled on. </span><code>podman rmi</code><span>. Run </span><code>oc adm prune</code><span> an automated way to remove absolete images and other resources.</span></p><p>&nbsp;</p><h4 id='troubleshooting-containerized-applications'><span>Troubleshooting Containerized Applications</span></h4><p><strong><span>Forwarding Ports for Troubleshooting</span></strong></p><p><code>oc port-forward &lt;name&gt; &lt;target machine&gt; &lt;pod port&gt;</code><span> forwards a local port to a pod port.</span></p><p><span>	</span><span>can be used to create at any time not just during podman run</span></p><p><span>	</span><span>exists only in the workstation where the oc client runs</span></p><p><span>	</span><span>service load balances connections  to potentially multiple pods.</span></p><p><strong><span>Enabling Remote Debugging with Port Forwarding</span></strong></p><p><span>This needs to be enabled in the .config files</span></p><p><span>then use </span><code>oc port-forward</code><span> on the port</span></p><p><strong><span>Access Container Logs</span></strong></p><p><code>podman logs &lt;containername&gt;</code></p><p><code>oc logs &lt;podName&gt; [-c &lt;container name&gt;]</code></p><p><strong><span>OpenShift Events</span></strong></p><p><code>oc get events</code></p><p><code>oc describe pod mysql</code></p><p><strong><span>Overriding Container Binaries</span></strong></p><p><code>podma run -it -v /bin:/bin &lt;image&gt; /bin/bash</code></p><p><strong><span>Tranferring Files to and From Containers</span></strong></p><p><span>Volume Mounts</span></p><p><code>podman run -v /conf:/etc/httpd/conf -d do180/apache</code></p><p><span>Podman CP</span></p><p><code>podman cp &lt;file|.conf&gt; &lt;destination location/.conf&gt;</code></p><p><span>flip the order if copying a file from container to host</span></p><p><span>Podman Exec</span></p><p><code>podman exec -i &lt;container name&gt; mysql -uroot -proot &lt;/path/on/host &lt; file.sql</code></p><hr /><p>&nbsp;</p></div></div>
+</body>
+</html>
